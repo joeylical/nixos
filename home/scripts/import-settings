@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# usage: import-gsettings
+config="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/settings.ini"
+if [ ! -f "$config" ]; then exit 1; fi
+
+gnome_schema="org.gnome.desktop.interface"
+gtk_theme="$(grep 'gtk-theme-name' "$config" | sed 's/.*\s*=\s*//')"
+icon_theme="$(grep 'gtk-icon-theme-name' "$config" | sed 's/.*\s*=\s*//')"
+cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
+font_name="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
+gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
+gsettings set "$gnome_schema" icon-theme "$icon_theme"
+gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
+gsettings set "$gnome_schema" font-name "$font_name"
+
+echo $gtk_theme | grep -qi 'Darkest'
+darkest=$?
+if [ "$darkest" -eq 0 ]; then
+    echo 'include /nix/store/3fxv3svadx2snlwz7khrfd2q73d7c1jm-kitty-themes-unstable-2023-09-15/share/kitty-themes/themes/Campbell.conf'>~/.config/kitty/theme
+else
+    echo $gtk_theme | grep -qi 'Dark'
+    dark=$?
+    if [ "$dark" -eq 0 ]; then
+        echo 'include /nix/store/3fxv3svadx2snlwz7khrfd2q73d7c1jm-kitty-themes-unstable-2023-09-15/share/kitty-themes/themes/Alucard.conf'>~/.config/kitty/theme
+    else
+        echo $gtk_theme | grep -qi 'Light'
+        light=$?
+        if [ "$light" -eq 0 ]; then
+            echo 'include /nix/store/3fxv3svadx2snlwz7khrfd2q73d7c1jm-kitty-themes-unstable-2023-09-15/share/kitty-themes/themes/Tomorrow.conf'>~/.config/kitty/theme
+        fi
+    fi
+fi
+
+pkill -SIGUSR1 kitty
+echo $gtk_theme | grep -qi 'Dark' && echo 'dark'>~/.darkmode || echo 'light'>~/.darkmode
+pkill -SIGUSR1 nvim
+setwp
