@@ -27,6 +27,8 @@ in
     # user applications
     ./apps.nix
     ./hyprland.nix
+    ./wofi.nix
+    ./kitty.nix
   ];
 
   # basic DE tools
