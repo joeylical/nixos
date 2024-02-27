@@ -29,6 +29,7 @@ in
     ./hyprland.nix
     ./wofi.nix
     ./kitty.nix
+    ./dunst.nix
   ];
 
   # basic DE tools

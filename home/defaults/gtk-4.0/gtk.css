@@ -1,0 +1,17 @@
+tooltip {
+    color: @theme_text_color;
+    /*color: @theme_fg_color;*/
+    background-color: @theme_bg_color;
+    text-shadow: none;
+    padding: 4px;
+    margin: 0px;
+    border-radius: 5px;
+    border: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.6);
+}
+
+tooltip label {
+    color: @theme_text_color;
+    /*font-size: medium;*/
+    padding: 0px;
+    margin: 0px;
+}

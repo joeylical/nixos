@@ -151,7 +151,7 @@
       "paper"
       "eww open bar"
       "fcitx5 -d"
-      "dunst"
+      # "dunst"
       "blueman-applet"
       "polkit-kde-authentication-agent-1"
       "hyprctl keyword 'device:syna2ba6:00-06cb:cec0-touchpad:enabled' false"
