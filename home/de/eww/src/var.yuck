@@ -1,0 +1,33 @@
+(defvar bartime_fmt "%m-%d %H:%M")
+(deflisten ime :initial "us" "getime.py")
+
+(deflisten current_workspace :initial "0" "get-active-workspace")
+(deflisten workspaces :initial "[]" "get-workspaces")
+
+(deflisten network :initial "{}" "getwifi.py")
+(deflisten bluetooth :initial "{}" "getbt.py")
+(deflisten weather :initial "{}" "getweather.py")
+
+(deflisten upower :initial "" "upower.py")
+
+(deflisten onedrive :initial "" "onedrive.py")
+
+(deflisten pipewire :interval "{}" "getvolume.py")
+
+(defvar bar_bg_color "background: @theme_bg_color;")
+
+; (defpoll redshift-icon :interval "1h" "[ $(pidof redshift) ] && echo '' || echo ''")
+; (defpoll redshift-status :interval "1h" "[ $(pidof redshift) ] && echo 'Turned on' || echo 'Turned off'")
+;
+; (defpoll airplane-icon :interval "1s" "scripts/airplane --icon")
+; ; (defpoll airplane-status :interval "30m" "scripts/airplane --status")
+;
+; (defpoll dnd-icon :interval "1h" "scripts/dnd --icon")
+; (defpoll dnd-status :interval "1h" "scripts/dnd --status")
+;
+; (defpoll power-saver-status :interval "1h" "scripts/power-saver --status")
+
+
+(deflisten brightness "getbrightness.py")
+
+(defpoll players :interval "1s" "getmi.py")

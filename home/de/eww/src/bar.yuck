@@ -1,0 +1,98 @@
+(defwidget bar []
+  (centerbox 
+    :class "bar"
+    :style "${bar_bg_color}"
+    (workspaces)
+    (clock)
+    (sidestuff)))
+
+(defwidget clock []
+  (box 
+    :class "clock"
+    (button
+      :onclick "eww close calendar || eww open calendar"
+      (label 
+        :text "${formattime(EWW_TIME, bartime_fmt)}"))))
+
+(defwidget menu []
+  (box 
+    :halign "center"
+    (button 
+      :onclick "eww close system-menu || eww open system-menu"
+      (label 
+        :text "${bluetooth.icons} ${pipewire.out.icon} ${pipewire.in.icon} "
+        :tooltip "${bluetooth.tooltip}"))))
+
+(defwidget ime []
+  (box 
+    (button 
+      :onclick "bash ./scripts/launch 'fcitx5-config-qt'"
+      :timeout "1h"
+      (label 
+        :text "${ime}"))))
+
+
+(defwidget network []
+  (box 
+    (button 
+      :onclick "bash ./scripts/launch 'nm-connection-editor'"
+      (label 
+        :text "${network.icon}"
+        :tooltip "${network.tooltip}"))))
+
+(defwidget weather []
+  (box 
+    (button 
+      :onclick "xdg-open https://www.google.com/search?q=$CITY%20weather&btnI=&sourceid=navclient&gfns=1" 
+      (label
+        :text "${weather.icon} ${weather.temp}°C"
+        :tooltip "${weather.icon} ${weather.temp}°C ${weather.humidity}%  ${weather.wind_di} ${weather.wind_speed}m/s"))))
+
+(defwidget onedrive []
+  (box 
+    (button 
+      :onclick "xdg-open /home/joey/OneDrive"
+      (label 
+        :text "${onedrive}"))))
+
+(defwidget sidestuff []
+  (box 
+    :class "sidestuff" 
+    :space-evenly false 
+    :halign "end" 
+    :spacing 10
+    (onedrive)
+    (weather)
+    (ime)
+    (network)
+    (menu)))
+    ; (clock)))
+
+(defwidget workspaces []
+  (box 
+    :class "workspaces"
+    :halign "start"
+     ;; !!! force evaluate current_workspace
+    :visible {arraylength(workspaces) != 1}
+    (label :text "${current_workspace}" :visible false)
+    (for workspace in workspaces
+      (eventbox 
+        :onclick "hyprctl dispatch workspace ${workspace.id}"
+        (button 
+          :class "${workspace.id == current_workspace ? 'current' : ''}" 
+          :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (label 
+            :text "${workspace.id}"))))))
+
+
+(defwindow bar
+  :monitor 0
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry 
+              :x "0%"
+              :y "0%"
+              :width "100%"
+              :height "14px"
+              :anchor "top center")
+              (bar))

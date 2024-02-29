@@ -23,7 +23,6 @@
     # dmenu-rs
     # networkmanager_dmenu
     dunst
-    eww-wayland
     waybar
     hyprpaper
     wlogout

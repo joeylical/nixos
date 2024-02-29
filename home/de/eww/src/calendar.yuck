@@ -1,0 +1,66 @@
+(defpoll calendar_day :interval "10h" "date '+%d'")
+; (defpoll calendar_month :interval "10h" "MONTH=$(date +%m) && MONTH=$((MONTH - 1)) && echo $MONTH")
+(defpoll calendar_month :interval "10h" "MONTH=$(date +%m) && echo $MONTH")
+(defpoll calendar_year :interval "10h" "date '+%Y'")
+(defpoll month_year :interval "24h" "date '+%B %Y'")
+
+(defwidget calendar-widget []
+  (box
+    :class "calendar-row"
+    :orientation "v"
+    :space-evenly false
+    (box 
+      ; :class "top-row" 
+      :valign "start"
+      :space-evenly false
+      :style "margin: 5px;padding: 5px;"
+      (label 
+        :class "time" 
+        :text "${formattime(EWW_TIME,"%H:%M")}")
+      (box 
+        :space-evenly false 
+        (image
+          :halign "end"
+          :style "margin: 0px -25px 0px 0px"
+          :path "${weather.image}"))
+        (box
+          :orientation "v"
+          :space-evenly false 
+          :style "margin: 24px 10px"
+          :halign "end"
+          (label
+          :halign "end"
+          :style "margin-left: 0px"
+            :text "${weather.main}")
+          (label
+          :halign "end"
+          :style "margin-left: 0px"
+            :text "${weather.temp}°C")
+          (label
+          :halign "end"
+          :style "margin-left: 0px"
+            :text "${weather.wind_di} ${weather.wind_speed}m/s")))
+    (box
+      :class "cal-box"
+      (calendar
+        :class "cal"
+        :show-details true
+        :show-heading true
+        :show-day-names true
+        :show-week-numbers false
+        :day calendar_day
+        :month calendar_month
+        :year calendar_year))))
+
+(defwindow calendar
+  :geometry (geometry
+              :x "0"
+              :y "20px"
+              :width "24%"
+              :height "30%"
+              :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  :monitor 0
+  (calendar-widget))
+

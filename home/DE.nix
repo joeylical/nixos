@@ -22,7 +22,7 @@ in
   };
 
   home.sessionVariables = {
-    XDG_CONFIG_DIRS = "/home/${userName}/.config/";
+    # XDG_CONFIG_DIRS = "/home/${userName}/.config/";
     NIXOS_OZONE_WL = "1";
   };
 }

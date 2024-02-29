@@ -1,4 +1,25 @@
 { config, pkgs, lib, environment, ... }:
+let
+
+  # todo: generate list frome readdir
+  scripts = [
+    "getweather.py"
+    "getbrightness.py"
+    "getbt.py"
+    "getime.py"
+    "getmi.py"
+    "getvolume.py"
+    "getwifi.py"
+    "upower.py"
+    "condense"
+  ];
+
+  shellscripts = [
+    "get-active-workspace"
+    "get-workspaces"
+    "launch"
+  ];
+in
 {
   home.packages =with pkgs; [
       (writeShellScriptBin "import-gsettings" (builtins.readFile ./import-settings))
@@ -11,6 +32,9 @@
 
       (writeShellScriptBin "setrr" (builtins.readFile ./setrr.sh))
       (writeShellScriptBin "paper" (builtins.readFile ./paper.sh))
-      (writeScriptBin "condense" (builtins.readFile ./condense))
-    ];
+      # (writeScriptBin "condense" (builtins.readFile ./condense))
+
+    ] ++ (builtins.map (name: (writeScriptBin name (builtins.readFile (./. + "/${name}")))) scripts)
+     ++ (builtins.map (name: (writeShellScriptBin name (builtins.readFile (./. + "/${name}"))))
+     shellscripts);
 }

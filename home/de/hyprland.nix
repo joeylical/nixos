@@ -1,6 +1,14 @@
-{ ... }:
+{specialArgs, pkgs, ... }:
 {
   wayland.windowManager.hyprland.enable = true;
+
+  wayland.windowManager.hyprland.package =
+    specialArgs.hyprland.packages.${pkgs.system}.hyprland;
+  
+  wayland.windowManager.hyprland.plugins = [
+    # fixme
+    # specialArgs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+  ];
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -20,15 +28,15 @@
 
     decoration = {
       blur = {
-        enabled = true;
+        enabled = false;
         passes = 1;
         size = 10;
       };
       "col.shadow" = "rgba(0a0a0a44)";
       drop_shadow = true;
-      rounding = 4;
-      shadow_range = 20;
-      shadow_render_power = 3;
+      rounding = 5;
+      shadow_range = 40;
+      shadow_render_power = 5;
       dim_inactive = false;
       dim_strength = "0.05";
     };
@@ -39,7 +47,7 @@
         "windows, 1, 3, default"
         "windowsOut, 1, 3, default, popin 80%"
         "border, 1, 5, default"
-        "borderangle, 1, 4, default"
+        "borderangle, 1, 5, default"
         "fade, 1, 3, default"
         "workspaces, 1, 3, default"
       ];
@@ -149,7 +157,8 @@
     exec-once = [
       "configure-gtk"
       "paper"
-      "eww open bar"
+      "eww open bar --config /etc/nixos/home/de/eww/" # fixme: the nixos-rebuild doesn't create soft
+      # link of the folder
       "fcitx5 -d"
       # "dunst"
       "blueman-applet"
