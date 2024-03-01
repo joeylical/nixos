@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  enable = true;
+  enable = false;
 in
 {
   virtualisation.waydroid.enable = enable;

@@ -28,6 +28,7 @@ in
 
   systemd.user.sessionVariables = {
     LANG = "C.UTF-8";
+    # XDG_DATA_HOME   = "$HOME/.local/share";
   };
 
   programs.git = {

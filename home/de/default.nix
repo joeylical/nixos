@@ -28,7 +28,7 @@ in
     ./apps.nix
     ./hyprland.nix
     ./eww.nix
-    # ./waybar.nix
+    ./waybar.nix
     ./wofi.nix
     ./kitty.nix
     ./dunst.nix
@@ -45,6 +45,8 @@ in
     papirus-icon-theme
 
   ];
+
+  xdg.enable = true;
 
   services.easyeffects.enable = true;
 }
