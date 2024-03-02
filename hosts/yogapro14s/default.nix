@@ -18,9 +18,9 @@
     initrd.kernelModules = [
       "amdgpu"
     ];
-    initrd.secrets = {
-      "/crypto_keyfile.bin" = null;
-    };
+    # initrd.secrets = {
+    #   "/crypto_keyfile.bin" = null;
+    # };
 
     loader = {
       efi = {

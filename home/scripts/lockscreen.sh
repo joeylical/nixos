@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if pgrep -x swaylock ; then
+    echo "locked"
+    exit 0
+fi
+
 swaylock \
     --image ~/.wallpaper/wallpaper \
     --clock \

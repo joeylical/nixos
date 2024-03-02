@@ -9,6 +9,10 @@
         fi
       fi
 
+      if ! [ -f "$HOME/.p10k.zsh" ]; then
+        cp /etc/nixos/home/de/p10k.zsh $HOME/.p10k.zsh
+      fi
+
       if [ -d "$HOME/.config/fcitx5/rime" ]; then
         if ! [ -d "$HOME/.local/share/fcitx5/rime" ]; then
           ln -s $HOME/.config/fcitx5/rime $HOME/.local/share/fcitx5/rime || echo
@@ -25,6 +29,7 @@
 
       cd /etc/nixos/home/defaults
       cp -r -n * $HOME/.config/ >/dev/null 2>&1 || echo
+      cd -
     '';
   };
 }

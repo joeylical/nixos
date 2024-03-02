@@ -15,15 +15,15 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4b77748f-0248-4588-80c0-5fefd280adba";
+    { device = "/dev/disk/by-uuid/4318e623-29a2-463d-821d-3a6504a0cc24";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
-  boot.initrd.luks.devices."luks-2c67f30d-4884-4820-9675-21ae9acade8b".device = "/dev/disk/by-uuid/2c67f30d-4884-4820-9675-21ae9acade8b";
+  boot.initrd.luks.devices."luks-fb70fe28-bd6e-493d-80ed-9d079a03eab3".device = "/dev/disk/by-uuid/fb70fe28-bd6e-493d-80ed-9d079a03eab3";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6FD4-C388";
+    { device = "/dev/disk/by-uuid/BF01-6CB1";
       fsType = "vfat";
     };
 
