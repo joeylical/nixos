@@ -2,7 +2,6 @@
   description = "NixOS";
 
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes"];
     substituters = [
       # "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
@@ -31,11 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     # vscode 插件库
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";

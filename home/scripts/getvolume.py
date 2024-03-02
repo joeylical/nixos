@@ -36,21 +36,23 @@ def get_json():
 
     return json.dumps(o, separators=(',',':'), sort_keys=True)
 
-print(get_json())
-sys.stdout.flush()
+try:
+    print(get_json())
+    sys.stdout.flush()
 
-# os.putenv('TERM', 'xterm')
+    # os.putenv('TERM', 'xterm')
 
-time.sleep(0.1)
-cmd = "pw-cli -m 2>&1"
-p = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                     stderr=subprocess.PIPE)
+    time.sleep(0.1)
+    cmd = "pw-cli -m 2>&1"
+    p = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                         stderr=subprocess.PIPE)
 
-changed = re.compile('device \d+ changed')
-while p.poll() is None:
-    line = p.stdout.readline().decode('utf-8')
-    if changed.search(line) is not None:
-        print(get_json())
-        sys.stdout.flush()
-    # time.sleep(0.1)
-
+    changed = re.compile('device \d+ changed')
+    while p.poll() is None:
+        line = p.stdout.readline().decode('utf-8')
+        if changed.search(line) is not None:
+            print(get_json())
+            sys.stdout.flush()
+        # time.sleep(0.1)
+except:
+    os.system('getvolumee.py')

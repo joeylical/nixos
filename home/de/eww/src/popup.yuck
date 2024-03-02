@@ -37,7 +37,7 @@
           :min 0
           :onchange "amixer sset Master {}%")
         (button 
-          :onclick "eww close system-menu && bash scripts/launch 'pavucontrol'" 
+          :onclick "eww close system-menu && launch 'pavucontrol'" 
           :class "slider-button" ""))
 
       (box 
@@ -57,7 +57,7 @@
           :min 0
           :onchange "amixer sset Capture {}%")
         (button 
-          :onclick "eww close system-menu && bash scripts/launch 'pavucontrol'" 
+          :onclick "eww close system-menu && launch 'pavucontrol'" 
           :class "slider-button" ""))
 
       (box 

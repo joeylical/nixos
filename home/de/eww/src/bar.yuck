@@ -26,7 +26,7 @@
 (defwidget ime []
   (box 
     (button 
-      :onclick "bash ./scripts/launch 'fcitx5-config-qt'"
+      :onclick "launch 'fcitx5-config-qt'"
       :timeout "1h"
       (label 
         :text "${ime}"))))
@@ -35,7 +35,7 @@
 (defwidget network []
   (box 
     (button 
-      :onclick "bash ./scripts/launch 'nm-connection-editor'"
+      :onclick "launch 'nm-connection-editor'"
       (label 
         :text "${network.icon}"
         :tooltip "${network.tooltip}"))))
