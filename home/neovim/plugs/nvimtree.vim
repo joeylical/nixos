@@ -9,6 +9,26 @@ endfunction
 
 autocmd VimEnter * call Start_ntree_toggle()
 
+let g:togglenvimtree = 0
+
+function! ToggleNTree()
+    if bufexists(bufnr('NvimTree'))
+        let g:togglenvimtree = 1
+    endif
+    execute "NvimTreeToggle"
+endfunction
+
+function! CloseNvimOnNvimTreeClose()
+    if g:togglenvimtree == 1
+        g:togglenvimtree = 0
+    else
+        qall
+    endif
+endfunction
+
+" 将函数绑定到 NvimTree 的关闭事件
+autocmd! FileType NvimTree autocmd WinLeave <buffer> call CloseNvimOnNvimTreeClose()
+
 lua <<EOF
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
@@ -20,7 +40,9 @@ lua <<EOF
             width = 30,
         },
         filters = {
-            dotfiles = true,
+        },
+        git = {
+            enable = true,
         },
     })
 EOF

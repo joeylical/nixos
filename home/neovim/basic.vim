@@ -8,6 +8,8 @@ set shiftwidth=4
 set expandtab
 
 autocmd FileType nix setlocal ts=2 sw=2
+autocmd FileType html setlocal ts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sw=2
 
 set incsearch
 set nohlsearch
