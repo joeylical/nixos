@@ -23,7 +23,7 @@
   boot.initrd.luks.devices."luks-fb70fe28-bd6e-493d-80ed-9d079a03eab3".device = "/dev/disk/by-uuid/fb70fe28-bd6e-493d-80ed-9d079a03eab3";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BF01-6CB1";
+    { device = "/dev/disk/by-uuid/6FD4-C388";
       fsType = "vfat";
     };
 

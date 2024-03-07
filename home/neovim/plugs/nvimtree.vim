@@ -27,7 +27,7 @@ function! CloseNvimOnNvimTreeClose()
 endfunction
 
 " 将函数绑定到 NvimTree 的关闭事件
-autocmd! FileType NvimTree autocmd WinLeave <buffer> call CloseNvimOnNvimTreeClose()
+" autocmd! FileType NvimTree autocmd WinLeave <buffer> call CloseNvimOnNvimTreeClose()
 
 lua <<EOF
     vim.g.loaded_netrw = 1

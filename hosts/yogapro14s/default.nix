@@ -23,6 +23,7 @@
     # };
 
     loader = {
+      timeout=1;
       efi = {
         efiSysMountPoint = "/boot";
         canTouchEfiVariables = true;
