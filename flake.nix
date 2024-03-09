@@ -116,6 +116,25 @@
       };
       # end of wsl
 
+      homeserver = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/homeserver
+          ./nixos
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home 的参数
+            home-manager.extraSpecialArgs = inputs // {desktop_env=false;} ;
+            home-manager.users."${userName}" = import ./home;
+          }
+        ];
+      };
+      # end of miniserver
+
       packages.x86_64-linux.default = "laptop";
     };
   };
