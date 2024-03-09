@@ -34,6 +34,9 @@
 
     foliate
 
+    android-tools
+    scrcpy
+
   ];
 
   programs.vscode = {
