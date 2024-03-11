@@ -25,6 +25,7 @@
 
     sqlitebrowser
     jetbrains.pycharm-community
+    jetbrains.idea-community
 
     dfeet
     openai-whisper-cpp
