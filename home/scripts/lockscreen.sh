@@ -6,6 +6,7 @@ if pgrep -x swaylock ; then
 fi
 
 swaylock \
+    -f \
     --font "Hack Nerd Font Mono" \
     --screenshots \
     --clock \
