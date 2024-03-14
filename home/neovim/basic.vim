@@ -122,3 +122,11 @@ nnoremap <leader>6 :BufferLineGoToBuffer 6<CR>
 nnoremap <leader>7 :BufferLineGoToBuffer 7<CR>
 nnoremap <leader>8 :BufferLineGoToBuffer 8<CR>
 nnoremap <leader>9 :BufferLineGoToBuffer 9<CR>
+
+" vimrc loader
+if filereadable("./vimrc")
+    runtime ./vimrc
+endif
+if filereadable("./vimrc.lua")
+    runtime ./vimrc.lua
+endif
