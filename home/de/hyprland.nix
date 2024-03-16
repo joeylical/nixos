@@ -2,13 +2,17 @@
 {
   wayland.windowManager.hyprland.enable = true;
 
-  # wayland.windowManager.hyprland.package =
-  #   specialArgs.hyprland.packages.${pkgs.system}.hyprland;
-  #
+  wayland.windowManager.hyprland.package =
+    specialArgs.hyprland.packages.${pkgs.system}.hyprland;
+  
   # wayland.windowManager.hyprland.plugins = [
   #   # fixme
   #   # specialArgs.hyprland-plugins.packages.${pkgs.system}.hyprbars
   # ];
+
+  home.packages = [
+    pkgs.hyprland-autoname-workspaces
+  ];
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
@@ -157,16 +161,18 @@
     exec-once = [
       "configure-gtk"
       "paper"
-      "eww open bar" # fixme: the nixos-rebuild doesn't create soft
+      # "eww open bar" # fixme: the nixos-rebuild doesn't create soft
       # link of the folder
       "fcitx5 -d"
       # "dunst"
+      "nm-applet --indicator"
       "blueman-applet"
       "polkit-kde-authentication-agent-1"
       "hyprctl keyword 'device:syna2ba6:00-06cb:cec0-touchpad:enabled' false"
       "easyeffects -w"
       "swayidle -w timeout 60 lockscreen timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep lockscreen"
       "pkexec swayosd-libinput-backend"
+      # "hyprland-autoname-workspaces"
     ];
 
     windowrule = [
@@ -219,5 +225,7 @@
       wallpaper = eDP-1,~/.wallpaper/wallpaper
       ipc = on
     '';
+    ".config/hyprland-autoname-workspaces/config.toml".text = builtins.readFile
+    ./hyprland-autoname-workspaces.toml;
   };
 }

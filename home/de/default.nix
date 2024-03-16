@@ -28,7 +28,7 @@ in
     ./apps.nix
     ./hyprland.nix
     ./eww.nix
-    # ./waybar.nix
+    ./waybar.nix
     ./wofi.nix
     ./kitty.nix
     ./dunst.nix

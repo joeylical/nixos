@@ -30,11 +30,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
+
+    # waybar.url = "github:Alexays/Waybar";
 
     # vscode 插件库
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";

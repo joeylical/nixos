@@ -4,6 +4,7 @@ let
   # todo: generate list frome readdir
   scripts = [
     "getweather.py"
+    "getweather1.py"
     "getbrightness.py"
     "getbt.py"
     "getime.py"

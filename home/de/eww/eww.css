@@ -317,7 +317,8 @@ slider {
 }
 
 .cal {
-    padding: 1em .75em 0em;
+    /* padding: 1em .75em 0em; */
+    padding: 1px 3px;
 }
 
 calendar {
@@ -327,7 +328,7 @@ calendar {
 calendar :selected {
     color: @theme_selected_fg_color;
     background: @theme_selected_bg_color;
-    border-radius: 100%;
+    border-radius: 5px;
 }
 
 calendar :indeterminate {
