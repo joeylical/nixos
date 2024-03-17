@@ -4,8 +4,6 @@ let
   inherit (import ../config.nix) timeZone city;
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
     ./base
   ];

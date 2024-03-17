@@ -91,20 +91,38 @@
       };
       # end of laptop
 
-      wsl = nixpkgs.lib.nixosSystem {
+      wsl = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
 
-        modules = [
+        modules = with nixpkgs; [
           # add wsl modules
           inputs.nixos-wsl.nixosModules.wsl
           ./nixos
 
+          (let
+            pkgs = import nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          in
           {
             wsl = {
               enable = true;
               defaultUser = "${userName}";
             };
-          }
+            
+            networking.hostName = "wsl"; # Define your hostname.
+            # environment.sessionVariables = {
+            #   LD_LIBRARY_PATH = "/usr/lib/wsl/lib:${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
+            #   CUDA_PATH = "${pkgs.cudatoolkit}";
+            #   EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
+            #   EXTRA_CCFLAGS = "-I/usr/include";
+            # };
+            #
+            # environment.systemPackages = [
+            #   pkgs.cudatoolkit
+            # ];
+          })
 
           home-manager.nixosModules.home-manager
           {
