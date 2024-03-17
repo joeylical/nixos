@@ -162,7 +162,7 @@
         /*color: @theme_fg_color;*/
         background-color: @theme_bg_color;
         text-shadow: none;
-        padding: 8px;
+        padding: 2px;
         margin: 0px;
         border-radius: 5px;
         border: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.6);
