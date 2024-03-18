@@ -2,6 +2,8 @@
 {
   services.redis.servers."" = {
     enable = true;
-    bind = "192.168.0.200";
+    user = "redis";
   };
+
+  networking.firewall.allowedTCPPorts = [ 6379 ];
 }
