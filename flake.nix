@@ -77,6 +77,7 @@
           ./hosts/yogapro14s
           ./nixos
           ./nixos/components
+          ./nixos/phy/rocmrt.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -141,6 +142,7 @@
         modules = [
           ./hosts/homeserver
           ./nixos
+          ./nixos/phy/rocmrt.nix
 
           home-manager.nixosModules.home-manager
           {
