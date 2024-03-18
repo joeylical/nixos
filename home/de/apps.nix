@@ -38,6 +38,7 @@
     android-tools
     scrcpy
 
+    mongodb-compass
   ];
 
   programs.vscode = {
