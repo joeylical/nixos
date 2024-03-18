@@ -4,6 +4,8 @@ let
   inherit (import ../../config.nix) userName;
 in
 {
+  nixpkgs.config.allowUnfree = true;
+  
   environment.systemPackages = with pkgs; [
     git
     vim

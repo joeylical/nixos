@@ -78,6 +78,7 @@
           ./nixos
           ./nixos/components
           ./nixos/phy/rocmrt.nix
+          ./nixos/phy/docker.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -89,6 +90,7 @@
             home-manager.users."${userName}" = import ./home;
           }
         ];
+        virtualisation.docker.storageDriver = "btrfs";
       };
       # end of laptop
 
@@ -143,6 +145,8 @@
           ./hosts/homeserver
           ./nixos
           ./nixos/phy/rocmrt.nix
+          ./nixos/phy/docker.nix
+          ./nixos/services
 
           home-manager.nixosModules.home-manager
           {
