@@ -1,7 +1,7 @@
 { ... }:
 {
   services.mongodb = {
-    enable = true;
+    enable = false;
   };
 
   networking.firewall.allowedTCPPorts = [ 27017 ];
