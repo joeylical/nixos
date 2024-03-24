@@ -89,9 +89,6 @@
             home-manager.extraSpecialArgs = inputs // {desktop_env=true;} ;
             home-manager.users."${userName}" = import ./home;
           }
-          {
-            virtualisation.docker.storageDriver = "btrfs";
-          }
         ];
       };
       # end of laptop
