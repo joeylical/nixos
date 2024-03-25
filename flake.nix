@@ -17,7 +17,6 @@
   };
 
   inputs = {
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";      # 使用 nixos-unstable 分支
     home-manager.url = "github:nix-community/home-manager";
     #　follows 是　inputs 中的继承语法
