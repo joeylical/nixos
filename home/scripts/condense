@@ -15,7 +15,7 @@ def get_sub(url):
     # firstly, try to download subs directly
     saved_path = os.getcwd()
     with tempfile.TemporaryDirectory() as work_path:
-        os.chdir(work_path)
+        # os.chdir(work_path)
         run(f'yt-dlp --write-sub --convert-subs srt --skip-download "{url}" -o output')
         subs = glob.glob('*.srt')
         if len(subs) != 0:
@@ -26,7 +26,7 @@ def get_sub(url):
         else:
             run(f'yt-dlp -f "wa" -x --audio-format mp3 "{url}" -o output')
             run("ffmpeg -i output.mp3 -acodec pcm_s16le -ar 16000 output.wav")
-            run("whisper-cpp -m /storage/whisper/ggml-medium.bin -l auto -f output.wav -otxt -of text")
+            run("whisper-cpp -m /storage/whisper/ggml-small.bin -l auto -f output.wav -otxt -of text")
         with open('text.txt', 'r') as f:
             text = f.read()
 

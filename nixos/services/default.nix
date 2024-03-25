@@ -10,7 +10,4 @@ in
 {
   imports = [ ] ++ modules;
 
-  systemd.tmpfiles.rules = [
-    "d /data/ 0777 nixos users"
-  ];
 }

@@ -53,4 +53,8 @@ in
   users.defaultUserShell = pkgs.zsh;
 
   security.sudo.wheelNeedsPassword = false;
+
+  systemd.tmpfiles.rules = [
+    "d /storage/ 0777 nixos users"
+  ];
 }
