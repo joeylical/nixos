@@ -5,20 +5,10 @@ let
   scripts = [
     "getweather.py"
     "getweather1.py"
-    "getbrightness.py"
-    "getbt.py"
-    "getime.py"
-    "getmi.py"
-    "getvolume.py"
-    "getwifi.py"
-    "upower.py"
     "condense"
   ];
 
   shellscripts = [
-    "get-active-workspace"
-    "get-workspaces"
-    "launch"
   ];
 in
 {

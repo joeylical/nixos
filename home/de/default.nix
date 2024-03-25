@@ -27,7 +27,6 @@ in
     # user applications
     ./apps.nix
     ./hyprland.nix
-    ./eww.nix
     ./waybar.nix
     ./wofi.nix
     ./kitty.nix

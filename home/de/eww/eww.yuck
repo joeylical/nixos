@@ -1,5 +1,0 @@
-(include "./src/var.yuck")
-(include "./src/bar.yuck")
-(include "./src/popup.yuck")
-(include "./src/calendar.yuck")
-

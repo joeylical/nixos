@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-cd || return
-eval $1
-

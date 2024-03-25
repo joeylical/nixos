@@ -106,6 +106,7 @@
           config = lib.fileContents ./plugs/telescope.vim;
         }
         pkgs.vimPlugins.yuck-vim
+        pkgs.vimPlugins.vim-vsnip
       ];
     };
   };
