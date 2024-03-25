@@ -30,6 +30,9 @@ in
 
     ansible
     sqlite
+
+    yt-dlp
+    ffmpeg
   ];
 
   programs = {

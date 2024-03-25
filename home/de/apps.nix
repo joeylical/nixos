@@ -29,8 +29,6 @@
 
     dfeet
     openai-whisper-cpp
-    yt-dlp
-    ffmpeg
     playerctl
 
     foliate
