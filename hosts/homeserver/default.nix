@@ -18,6 +18,12 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8 * 1024;
+    randomEncryption.enable = true;
+  }];
+
   services.openssh = {
     enable = true;
     openFirewall = true;

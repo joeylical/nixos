@@ -2,7 +2,7 @@
 {
   home.packages =with pkgs; [
     p7zip
-    peazip
+    # peazip
     firefox-wayland
     ydict
     mpv   
@@ -27,7 +27,7 @@
     jetbrains.pycharm-community
     jetbrains.idea-community
 
-    dfeet
+    d-spy
     openai-whisper-cpp
     playerctl
 

@@ -14,6 +14,7 @@
         height = 25;
         modules-left = [
           "hyprland/workspaces"
+          "hyprland/window"
         ];
         modules-center = [
           "clock"
@@ -25,6 +26,10 @@
           "battery"
           "tray"
         ];
+        "hyprland/window" = {
+          format = "";
+        };
+
         "hyprland/workspaces" = {
           format = "{id}";
           onclick = "active";
@@ -93,12 +98,6 @@
         letter-spacing: 1px;
       }
  
-      #waybar.empty #clock {
-        background-color: red;
-        color: blue;
-        transition: 0.5s;
-      }
-
       #waybar {
         background-color: @theme_bg_color; 
         color: @theme_fg_color;
@@ -113,7 +112,7 @@
       }
 
 
-      #waybar.floating {
+      #waybar.floating:not(.solo) {
         background-color: transparent;
         transition: 0.5s;
       }

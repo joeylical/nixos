@@ -22,7 +22,6 @@ in
 
     unzip
     ripgrep
-    # rnix-lsp # OMG
     marksman
 
     bc
