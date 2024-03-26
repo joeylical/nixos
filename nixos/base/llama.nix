@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 let
-  url = "https://huggingface.co/hfl/chinese-alpaca-2-7b-64k-gguf/raw/main/ggml-model-q4_0.gguf";
+  url = "https://huggingface.co/hfl/chinese-alpaca-2-7b-64k-gguf/resolve/main/ggml-model-q4_0.gguf?download=true";
   model = "ggml-model-q4_0.gguf";
   llama_override = if (config.networking.hostName == "homeserver" || config.networking.hostName ==
     "laptop") then {
