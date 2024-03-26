@@ -17,7 +17,7 @@ in
       if [ -d /storage/llama ]; then
         cd /storage/llama/
         if [ ! -f ${model} ]; then
-          wget "${url}" -O "${model}"
+          ${pkgs.wget.out}/bin/wget "${url}" -O "${model}"
         fi
       fi
     '';
