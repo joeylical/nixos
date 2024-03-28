@@ -16,7 +16,7 @@
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    "$screen_file" = "$${HOME}/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
+    "$screen_file" = "$$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
     monitor = [
       "eDP-1,3072x1920@120,auto,2"
     ];
