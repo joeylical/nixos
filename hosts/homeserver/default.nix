@@ -35,6 +35,8 @@
   services.samba = {
     enable = true;
     nsswins = true;
+    enableNmbd = true;
+    enableWinbindd = true;
     securityType = "user";
     openFirewall = true;
     extraConfig = ''
@@ -45,10 +47,39 @@
       guest account = nobody
       map to guest = bad user
     '';
+    shares = {
+      public = {
+        path = "/storage/";
+        browseable = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "nixos";
+        "force group" = "users";
+      };
+    };
   };
+
+  services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      publish.addresses = true;
+    };
 
   services.samba-wsdd = {
     enable = true;
     openFirewall = true;
   };
+
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    jellyfin
+    jellyfin-web
+    jellyfin-ffmpeg
+  ];
 }
