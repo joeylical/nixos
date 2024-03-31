@@ -16,7 +16,7 @@
 
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    "$screen_file" = "$$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
+    "$screen_file" = "$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
     monitor = [
       "eDP-1,3072x1920@120,auto,2"
     ];
@@ -134,17 +134,14 @@
       ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
       ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ", XF86MonBrightnessUp, exec, light_wrap 10+"
-      ", XF86MonBrightnessDown, exec, light_wrap 10-"
+      ", XF86MonBrightnessUp, exec, light_wrap 20+"
+      ", XF86MonBrightnessDown, exec, light_wrap 20-"
       " ALT, XF86MonBrightnessUp, exec, light_wrap 3+"
       " ALT, XF86MonBrightnessDown, exec, light_wrap 3-"
       "$mod, T, exec, hyprctl getoption 'device:syna2ba6:00-06cb:cec0-touchpad:enabled'|grep -q 'int: 1' && (hyprctl keyword 'device:syna2ba6:00-06cb:cec0-touchpad:enabled' false && pkill -RTMIN+10 waybar) || (hyprctl keyword 'device:syna2ba6:00-06cb:cec0-touchpad:enabled' true && pkill -RTMIN+10 waybar)"
       "$mod CTRL, L, exec, lockscreen"
       ", XF86Calculator, exec, qalculate-qt"
-      "$mod SHIFT, S, exec, grim -g '$(slurp)' - | wl-copy"
-      ", Print,      exec, grim $screen_file"
-      "SHIFT, Print,exec, grim -g '$(slurp)' $screen_file"
-      "ALT, Print,  exec, grim - | wl-copy"
+      ''$mod SHIFT, s, exec, grim -g "$(slurp -d)" $screen_file''
     ];
 
     bindm = [
