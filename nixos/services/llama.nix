@@ -1,14 +1,10 @@
 { lib, config, ... }:
-# wait for 24.05
 {
-  # services.llama-cpp = {
-  #   enable = true;
-  #   port = 9920;
-  #   openFirewall = true;
-  #   model = "/data/llama/ggml-model-q4_0.gguf";
-  # };
-  #
-  # systemd.tmpfiles.rules = [
-  #   "d /data/llama/ 0777 nixos users"
-  # ];
+  services.llama-cpp = {
+    enable = true;
+    host = "0.0.0.0";
+    port = 9920;
+    openFirewall = true;
+    model = "/storage/llama/ggml-model-q4_0.gguf";
+  };
 }
