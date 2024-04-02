@@ -156,6 +156,28 @@
         margin-right: 8px;
       }
 
+      #tray menu {
+        background-color: @theme_bg_color;
+        color: @theme_fg_color;
+        padding: 10px 0px;
+        border-radius: 5px;
+        border: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.6);
+      }
+
+      #tray menu menuitem {
+        padding: 4px 20px;
+      }
+
+      #tray menu separator {
+        margin: 0px 2px;
+        border-bottom: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.2);
+      }
+
+      #tray menu menuitem:hover {
+        background-color: @theme_selected_bg_color;
+        color: @theme_selected_fg_color;
+      }
+
       tooltip {
         color: @theme_text_color;
         /*color: @theme_fg_color;*/
