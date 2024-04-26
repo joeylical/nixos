@@ -114,6 +114,9 @@
             };
             
             networking.hostName = "wsl"; # Define your hostname.
+            environment.sessionVariables = {
+              LD_LIBRARY_PATH = "/usr/lib/wsl/lib";
+            };
             # environment.sessionVariables = {
             #   LD_LIBRARY_PATH = "/usr/lib/wsl/lib:${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
             #   CUDA_PATH = "${pkgs.cudatoolkit}";
