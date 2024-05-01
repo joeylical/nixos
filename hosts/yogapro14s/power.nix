@@ -24,13 +24,15 @@
     ];
   };
 
+  powerManagement.powertop.enable = true;
+
   services.tlp = {
     enable = true;
     settings = {
       # Operation
       TLP_ENABLE = 1;
       # Audio
-      SOUND_POWER_SAVE_ON_AC = 0;
+      SOUND_POWER_SAVE_ON_AC = 1;
       SOUND_POWER_SAVE_ON_BAT = 1;
       SOUND_POWER_SAVE_CONTROLLER = "Y";
       # Battery Care
@@ -42,8 +44,8 @@
       TPSMAPI_ENABLE = 1;
       # Disks and Controllers
       DISK_DEVICES = "nvme0";
-      DISK_APM_LEVEL_ON_AC = "keep keep";
-      DISK_APM_LEVEL_ON_BAT = "keep keep";
+      DISK_APM_LEVEL_ON_AC = "254 254";
+      DISK_APM_LEVEL_ON_BAT = "128 128";
       DISK_SPINDOWN_TIMEOUT_ON_AC = "12 12";
       DISK_SPINDOWN_TIMEOUT_ON_BAT = "12 12";
       DISK_IOSCHED = "mq-deadline mq-deadline";
@@ -87,11 +89,13 @@
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;
       # Radio Device Switching
+      DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
+      DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth";
       # Radio Device Wizard
       # Runtime Power Management and ASPM
       RUNTIME_PM_ON_AC = "auto";
       RUNTIME_PM_ON_BAT = "auto";
-      RUNTIME_PM_DENYLIST = "04:00.0";
+      # RUNTIME_PM_DENYLIST = "04:00.0";
       PCIE_ASPM_ON_AC = "default";
       PCIE_ASPM_ON_BAT = "default";
       # USB

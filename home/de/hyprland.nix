@@ -18,7 +18,7 @@
     "$mod" = "SUPER";
     "$screen_file" = "$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
     monitor = [
-      "eDP-1,3072x1920@120,auto,2"
+      "eDP-1,3072x1920@60,auto,2"
     ];
 
     general = {
@@ -46,7 +46,7 @@
     };
 
     animations = {
-      enabled = true;
+      enabled = false;
       animation = [
         "windows, 1, 3, default"
         "windowsOut, 1, 3, default, popin 80%"

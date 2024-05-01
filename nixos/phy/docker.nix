@@ -6,7 +6,7 @@ in
   users.users."${userName}".extraGroups = [ "docker" ];
   virtualisation.docker = {
     enable = true;
-    enableOnBoot = true;
+    enableOnBoot = false;
     storageDriver = "btrfs";
   };
 }

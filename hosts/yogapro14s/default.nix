@@ -21,6 +21,9 @@
     # initrd.secrets = {
     #   "/crypto_keyfile.bin" = null;
     # };
+    kernelParams = [
+      "amd_pstate=active"
+    ];
 
     loader = {
       timeout=1;

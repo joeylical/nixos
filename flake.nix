@@ -78,7 +78,8 @@
           ./nixos/components
           ./nixos/phy/rocmrt.nix
           ./nixos/phy/docker.nix
-          ./nixos/services/zerotier.nix
+          # ./nixos/services/zerotier.nix
+          ./nixos/services/epp.nix
 
           home-manager.nixosModules.home-manager
           {
