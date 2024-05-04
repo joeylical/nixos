@@ -170,6 +170,8 @@
       "swayidle -w timeout 60 lockscreen timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep lockscreen"
       "pkexec swayosd-libinput-backend"
       # "hyprland-autoname-workspaces"
+      "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
+      "hyprshade auto"
     ];
 
     windowrule = [
