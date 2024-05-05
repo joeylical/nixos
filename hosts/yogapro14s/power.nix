@@ -8,7 +8,7 @@
   # };
 
   systemd.services.ryzenadj = {
-    enable = true;
+    enable = false;
     description = "RyzenAdj Autoset";
     serviceConfig = {
       Type = "oneshot";
@@ -27,7 +27,7 @@
   powerManagement.powertop.enable = true;
 
   services.tlp = {
-    enable = true;
+    enable = false;
     settings = {
       # Operation
       TLP_ENABLE = 1;

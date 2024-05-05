@@ -18,6 +18,7 @@
     "$mod" = "SUPER";
     "$screen_file" = "$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
     monitor = [
+      # "eDP-1,3072x1920@120,auto,2"
       "eDP-1,3072x1920@60,auto,2"
     ];
 
@@ -46,7 +47,7 @@
     };
 
     animations = {
-      enabled = false;
+      enabled = true;
       animation = [
         "windows, 1, 3, default"
         "windowsOut, 1, 3, default, popin 80%"
@@ -77,7 +78,7 @@
       };
       follow_mouse = true;
       kb_layout = "us";
-      sensitivity = 0;
+      sensitivity = "0.5";
     };
 
     master = {
@@ -215,6 +216,10 @@
       "float, class:(yesplaymusic)"
       "float, class:(QQ)"
       "center, floating:1"
+      "float,class:^(Zotero)$,title:Zotero Settings"
+      "center,class:^(Zotero)$,title:Zotero Settings"
+      "noanim,class:^(Zotero)$,title:Zotero Settings"
+      # "maxsize 400 100,class:^(Zotero)$,title:Zotero Settings"
     ];
   };
 

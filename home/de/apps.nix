@@ -39,6 +39,8 @@
     mongodb-compass
 
     hyprshade
+
+    zotero_7
   ];
 
   home.file.".config/hypr/hyprshade.toml".text = ''
