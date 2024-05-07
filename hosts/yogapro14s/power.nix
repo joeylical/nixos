@@ -8,12 +8,12 @@
   # };
 
   systemd.services.ryzenadj = {
-    enable = false;
+    enable = true;
     description = "RyzenAdj Autoset";
     serviceConfig = {
       Type = "oneshot";
       User = "root";
-      ExecStart = "/run/current-system/sw/bin/ryzenadj -a 15 --power-saving";
+      ExecStart = "/run/current-system/sw/bin/ryzenadj -a 35 --power-saving";
     };
     wantedBy = [ "multi-user.target" ];
     after = [
@@ -27,7 +27,7 @@
   powerManagement.powertop.enable = true;
 
   services.tlp = {
-    enable = false;
+    enable = true;
     settings = {
       # Operation
       TLP_ENABLE = 1;
@@ -36,9 +36,9 @@
       SOUND_POWER_SAVE_ON_BAT = 1;
       SOUND_POWER_SAVE_CONTROLLER = "Y";
       # Battery Care
-      # START_CHARGE_THRESH_BAT0 = 70;
-      # STOP_CHARGE_THRESH_BAT0 = 80;
-      # RESTORE_THRESHOLDS_ON_BAT = 0;
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+      RESTORE_THRESHOLDS_ON_BAT = 0;
       NATACPI_ENABLE = 1;
       TPACPI_ENABLE = 1;
       TPSMAPI_ENABLE = 1;
@@ -80,11 +80,11 @@
       CPU_DRIVER_OPMODE_ON_BAT = "active";
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_SCALING_MIN_FREQ_ON_AC = "400000";
-      CPU_SCALING_MAX_FREQ_ON_AC = "4785000";
-      CPU_SCALING_MIN_FREQ_ON_BAT = "400000";
-      CPU_SCALING_MAX_FREQ_ON_BAT = "3200000";
-      CPU_ENGERGY_PERF_POLICY_ON_AC = "balance_power";
+      # CPU_SCALING_MIN_FREQ_ON_AC = "400000";
+      # CPU_SCALING_MAX_FREQ_ON_AC = "4785000";
+      # CPU_SCALING_MIN_FREQ_ON_BAT = "400000";
+      # CPU_SCALING_MAX_FREQ_ON_BAT = "3200000";
+      CPU_ENGERGY_PERF_POLICY_ON_AC = "balance_performance";
       CPU_ENGERGY_PERF_POLICY_ON_BAT = "power";
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;

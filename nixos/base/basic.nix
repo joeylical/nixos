@@ -34,6 +34,8 @@ in
 
     yt-dlp
     ffmpeg
+
+    lm_sensors
   ];
 
   programs = {
