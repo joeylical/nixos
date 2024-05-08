@@ -16,10 +16,10 @@
     gthumb
     stellarium
     go-musicfox
-    koreader
+    # koreader
     # onlyoffice-bin
     # wpsoffice
-    onedrivegui
+    # onedrivegui
     spotify-qt
     thunderbird-bin
 
@@ -41,6 +41,8 @@
     hyprshade
 
     zotero_7
+
+    onedriver
   ];
 
   home.file.".config/hypr/hyprshade.toml".text = ''

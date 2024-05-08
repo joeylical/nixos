@@ -59,6 +59,7 @@
           interval = 5;
           format = "󰂀";
           "format-charging" = "󰂄";
+          "format-not-charging" = "󰚥";
           "format-plugged" = "󰚥";
           "format-icons" = [
             "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"

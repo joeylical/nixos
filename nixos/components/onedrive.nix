@@ -1,7 +1,7 @@
 { ... }:
 
 let
-  enable = true;
+  enable = false;
 in if enable then
 {
   services.onedrive.enable = true;

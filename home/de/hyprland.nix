@@ -159,10 +159,8 @@
     exec-once = [
       "configure-gtk"
       "paper"
-      # "eww open bar" # fixme: the nixos-rebuild doesn't create soft
-      # link of the folder
       "fcitx5 -d"
-      # "dunst"
+      "dunst"
       "nm-applet --indicator"
       "blueman-applet"
       "polkit-kde-authentication-agent-1"
@@ -173,6 +171,7 @@
       # "hyprland-autoname-workspaces"
       "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
       "hyprshade auto"
+      "onedriver ~/onedrive/"
     ];
 
     windowrule = [
@@ -214,6 +213,7 @@
       "float, class:(reboot.py)"
       "float, class:(org.kde.polkit-kde-authentication-agent-1)"
       "float, class:(yesplaymusic)"
+      "float, class:(onedriver)"
       "float, class:(QQ)"
       "center, floating:1"
       "float,class:^(Zotero)$,title:Zotero Settings"
