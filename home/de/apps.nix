@@ -16,6 +16,7 @@
     gthumb
     stellarium
     go-musicfox
+    youtube-music
     # koreader
     # onlyoffice-bin
     # wpsoffice

@@ -23,7 +23,7 @@
     # };
     kernelParams = [
       "amd_pstate=active"
-      "amdgpu.abmlevel=2"
+      "amdgpu.abmlevel=1"
     ];
 
     loader = {
