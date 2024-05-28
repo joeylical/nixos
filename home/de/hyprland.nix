@@ -2,8 +2,8 @@
 {
   wayland.windowManager.hyprland.enable = true;
 
-  wayland.windowManager.hyprland.package =
-    specialArgs.hyprland.packages.${pkgs.system}.hyprland;
+  # wayland.windowManager.hyprland.package =
+  #   specialArgs.hyprland.packages.${pkgs.system}.hyprland;
   
   # wayland.windowManager.hyprland.plugins = [
   #   # fixme

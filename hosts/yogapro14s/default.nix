@@ -65,21 +65,12 @@
   };
 
 
-  # xserver
-  services.xserver = {
-    enable = true;
-    xkb.layout = "us";
+  services = {
     libinput.enable = true;
-    dpi = 250;
     displayManager = {
       defaultSession = "hyprland";
       autoLogin = {
         enable = true;
-      };
-      gdm = {
-        enable = false;
-        wayland = true;
-        autoLogin.delay = 1;
       };
       sddm = {
         enable = true;
@@ -93,6 +84,21 @@
       };
     };
   };
+
+  # xserver
+  services.xserver = {
+    enable = true;
+    xkb.layout = "us";
+    dpi = 250;
+    displayManager = {
+      gdm = {
+        enable = false;
+        wayland = true;
+        autoLogin.delay = 1;
+      };
+    };
+  };
+
   environment.variables = {
   };
 
