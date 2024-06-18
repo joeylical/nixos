@@ -152,7 +152,6 @@
     ];
 
     env = [
-      "WLR_DRM_DEVICES, /dev/dri/card0"
       "XCURSOR_SIZE, 24"
     ];
 
@@ -169,9 +168,7 @@
       "swayidle -w timeout 60 lockscreen timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep lockscreen"
       "pkexec swayosd-libinput-backend"
       # "hyprland-autoname-workspaces"
-      "dbus-update-activation-environment --systemd HYPRLAND_INSTANCE_SIGNATURE"
       "hyprshade auto"
-      "onedriver ~/onedrive/"
     ];
 
     windowrule = [
@@ -229,7 +226,7 @@
       wallpaper = eDP-1,~/.wallpaper/wallpaper
       ipc = on
     '';
-    ".config/hyprland-autoname-workspaces/config.toml".text = builtins.readFile
-    ./hyprland-autoname-workspaces.toml;
+    # ".config/hyprland-autoname-workspaces/config.toml".text = builtins.readFile
+    # ./hyprland-autoname-workspaces.toml;
   };
 }
