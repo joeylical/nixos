@@ -19,6 +19,11 @@
       options = [ "subvol=@" ];
     };
 
+  fileSystems."/storage" =
+    { device = "/dev/disk/by-uuid/6444e55f-b615-45d2-9c1c-8d9181938b6a";
+      options = [ "nofail" ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/E979-F338";
       fsType = "vfat";
