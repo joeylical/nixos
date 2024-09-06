@@ -77,6 +77,16 @@
     openFirewall = true;
   };
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+      };
+    };
+  };
+  services.blueman.enable = true;
+
   environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-web
