@@ -101,6 +101,7 @@
           # add wsl modules
           inputs.nixos-wsl.nixosModules.wsl
           ./nixos
+          ./nixos/phy/docker.nix
 
           (let
             pkgs = import nixpkgs {
@@ -128,6 +129,11 @@
             # environment.systemPackages = [
             #   pkgs.cudatoolkit
             # ];
+            users.users."${userName}".extraGroups = [ "docker" ];
+            virtualisation.docker.rootless = {
+              enable = true;
+              setSocketVariable = true;
+            };
           })
 
           home-manager.nixosModules.home-manager
