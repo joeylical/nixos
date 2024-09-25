@@ -51,6 +51,8 @@
   ];
 
   environment.sessionVariables.PATH = "${pkgs.libsForQt5.polkit-kde-agent.out}/libexec";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
 
   programs = {
     xwayland.enable = true;

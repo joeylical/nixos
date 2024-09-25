@@ -8,7 +8,12 @@
     mpv   
     vlc
     qalculate-qt
-    chromium
+    (chromium.override {
+      commandLineArgs = [
+        "--enable-wayland-ime"
+        "--enable-features=VaapiVideoDecodeLinuxGL"
+      ];
+    })
     obsidian
     rhythmbox
     audacious
@@ -58,6 +63,8 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhs;
+    package = (pkgs.vscode.override{
+      commandLineArgs = "--enable-wayland-ime";
+    }).fhs;
   };
 }
