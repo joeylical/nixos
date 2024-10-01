@@ -49,6 +49,10 @@
     zotero_7
 
     onedriver
+
+    quickgui
+    quickemu
+    qemu
   ];
 
   home.file.".config/hypr/hyprshade.toml".text = ''

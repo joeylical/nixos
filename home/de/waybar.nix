@@ -25,6 +25,7 @@
           "pulseaudio"
           "battery"
           "tray"
+          "group/group-power"
         ];
         "hyprland/window" = {
           format = "";
@@ -89,6 +90,45 @@
           "icon-size" = 12;
           spacing = 2;
         };
+
+        "group/group-power" = {
+          orientation = "inherit";
+          drawer = {
+            "transition-duration" = 500;
+            "children-class" = "not-power";
+            "transition-left-to-right" = true;
+          };
+          modules = [
+            "custom/power"
+            "custom/quit"
+            "custom/lock"
+            "custom/reboot"
+          ];
+        };
+
+        "custom/quit" = {
+          format = "󰗼";
+          tooltip = false;
+          "on-click" = "hyprctl dispatch exit";
+        };
+
+        "custom/lock" = {
+          format = "󰍁";
+          tooltip = false;
+          "on-click" = "lockscreen";
+        };
+
+        "custom/reboot" = {
+          format = "󰜉";
+          tooltip = false;
+          "on-click" = "reboot";
+        };
+
+        "custom/power" = {
+          format = "";
+          tooltip = false;
+          "on-click" = "shutdown now";
+        };
       };
     };
     style = ''
@@ -149,6 +189,11 @@
         font-weight: 600;
       }
 
+      #group-group-power,
+      #custom-quit,
+      #custom-lock,
+      #custom-reboot,
+      #custom-power,
       #custom-weather,
       #idle_inhibitor,
       #battery,
@@ -166,7 +211,7 @@
       }
 
       #tray menu menuitem {
-        padding: 4px 20px;
+        padding: 4px 10px;
       }
 
       #tray menu separator {
