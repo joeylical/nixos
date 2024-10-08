@@ -1,13 +1,12 @@
-{ config, pkgs, lib, environment, ... }:
-
+{ config, pkgs, lib, environment, nixneovimplugins, ... }:
 {
-  config = {
+  config = let
+  in {
     home.packages =with pkgs; [
       (neovim-qt.override { neovim = config.programs.neovim.finalPackage; })
       neovide
       ansible-language-server
     ];
-
 
     home.sessionVariables = {
       EDITOR = "nvim";
@@ -107,6 +106,7 @@
         }
         pkgs.vimPlugins.yuck-vim
         pkgs.vimPlugins.vim-vsnip
+        pkgs.vimExtraPlugins.sqls-nvim
       ];
     };
   };

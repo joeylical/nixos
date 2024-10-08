@@ -29,6 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
+
     # hyprland.url = "github:hyprwm/Hyprland";
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
@@ -41,13 +43,11 @@
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  # outputs 的参数都是 inputs 中定义的依赖项，可以通过它们的名称来引用。
-  # 不过 self 是个例外，这个特殊参数指向 outputs 自身（自引用），以及 flake 根目录
-  # 这里的 @ 语法将函数的参数 attribute set 取了个别名，方便在内部使用
   outputs = inputs@{
       self,
       nixpkgs,
       home-manager,
+      nixneovimplugins,
       # nix-vscode-extensions,
       ...
   }: 
@@ -55,23 +55,11 @@
     inherit (import ./config.nix) userName;
   in
   {
+
     nixosConfigurations = {
-      # 这里使用了 nixpkgs.lib.nixosSystem 函数来构建配置，后面的 attributes set 是它的参数
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        # modules 中每个参数，都是一个 NixOS Module <https://nixos.org/manual/nixos/stable/index.html#sec-modularity>
-        # NixOS Module 可以是一个 attribute set，也可以是一个返回 attribute set 的函数
-        # 如果是函数，那么它的参数就是当前的 NixOS Module 的参数.
-        # 根据 Nix Wiki 对 NixOS modules 的描述，NixOS modules 函数的参数可以有这四个（详见本仓库中的 modules 文件）：
-        #
-        #  config: The configuration of the entire system
-        #  options: All option declarations refined with all definition and declaration references.
-        #  pkgs: The attribute set extracted from the Nix package collection and enhanced with the nixpkgs.config option.
-        #  modulesPath: The location of the module directory of NixOS.
-        #
-        # nix flake 的 modules 系统可将配置模块化，提升配置的可维护性
-        # 默认只能传上面这四个参数，如果需要传其他参数，必须使用 specialArgs
         modules = [
           ./hosts/yogapro14s
           ./nixos
@@ -103,13 +91,12 @@
           ./nixos
           ./nixos/phy/docker.nix
 
-          (let
-            pkgs = import nixpkgs {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          in
           {
+            nixpkgs = {
+              config.allowUnfree = true;
+              overlays = [nixneovimplugins.overlays.default];
+            };
+
             wsl = {
               enable = true;
               defaultUser = "${userName}";
@@ -134,7 +121,7 @@
               enable = true;
               setSocketVariable = true;
             };
-          })
+          }
 
           home-manager.nixosModules.home-manager
           {

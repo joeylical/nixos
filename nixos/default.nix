@@ -25,6 +25,8 @@ in
     
     # Not officially in the specification
     XDG_BIN_HOME    = "$HOME/.local/bin";
+
+    NIXPKGS_ALLOW_UNFREE = "1";
   };
 
   system.autoUpgrade = {
