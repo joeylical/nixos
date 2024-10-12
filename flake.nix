@@ -31,6 +31,8 @@
 
     nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
 
+    llama-cpp.url = "github:ggerganov/llama.cpp";
+
     # hyprland.url = "github:hyprwm/Hyprland";
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
@@ -94,7 +96,10 @@
           {
             nixpkgs = {
               config.allowUnfree = true;
-              overlays = [nixneovimplugins.overlays.default];
+              overlays = [
+                nixneovimplugins.overlays.default
+                inputs.llama-cpp.overlays.default
+              ];
             };
 
             wsl = {

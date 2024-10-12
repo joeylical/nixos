@@ -2,7 +2,7 @@ lua <<EOF
 require('flash').setup({
     search = {
         multi_window = false,
-        forward = true,
+        -- forward = true,
         wrap = false
     },
     modes = {

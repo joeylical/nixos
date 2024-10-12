@@ -6,6 +6,7 @@
       (neovim-qt.override { neovim = config.programs.neovim.finalPackage; })
       neovide
       ansible-language-server
+      nil
     ];
 
     home.sessionVariables = {
@@ -107,6 +108,8 @@
         pkgs.vimPlugins.yuck-vim
         pkgs.vimPlugins.vim-vsnip
         pkgs.vimExtraPlugins.sqls-nvim
+        pkgs.vimPlugins.orgmode
+        pkgs.vimPlugins.lspkind-nvim
       ];
     };
   };
