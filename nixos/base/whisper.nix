@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 let
-  model = "small";
+  model = "tiny-q5_1";
 in
 {
   environment.systemPackages = [

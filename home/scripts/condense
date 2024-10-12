@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import glob
+import hashlib
 import tempfile
 import subprocess
 import requests
@@ -24,19 +25,24 @@ def get_sub(url):
         subs = glob.glob('*.srt')
         if len(subs) != 0:
             file = subs[0]
-            run("sed -r '/^[0-9]+$/{n;d}' " + file + " > text")
-            with open('text', 'r') as f:
+            # run("sed -r '/^[0-9]+$/{n;d}' " + file + " > text")
+            with open(file, 'r') as f:
                 text = f.read()
+            print(text)
         else:
             run(f'yt-dlp -f "wa" -x --audio-format mp3 "{url}" -o output')
             run("ffmpeg -i output.mp3 -acodec pcm_s16le -ar 16000 output.wav")
-            run("whisper-cpp -m /storage/whisper/ggml-small.bin -l auto -f output.wav -otxt -of text")
+            os.system("whisper-cpp -m /storage/whisper/ggml-small.bin -l auto -f output.wav -otxt 2>/dev/null |tee text.txt")
+            os.system('ls -lh text.txt')
             with open('text.txt', 'r') as f:
                 text = f.read()
 
     os.chdir(saved_path)
+    text += "\n对于上面的视频文本，视频总结专家做出了如下的视频内容总结:\n"
     return text
 
+def get_summarization(text, path):
+    os.system(f'llama-cli -m /storage/llama/ggml-model-q4_0.gguf --temp 0.2 --repeat-penalty 1.15 --file ' + path + ' --log-disable --no-display-prompt --no-warmup --simple-io 2>/dev/null')
 
 def usage():
     print('Usage: condense URL')
@@ -47,8 +53,18 @@ def main():
         exit()
 
     url = sys.argv[1]
+    cache_fn = ".condense/" + hashlib.sha1(url.encode('utf-8')).hexdigest()
+    cache_fn = os.path.join(os.environ['HOME'], cache_fn)
+    cache_fn = os.path.abspath(cache_fn)
+    if os.path.exists(cache_fn):
+        with open(cache_fn, 'r') as f:
+            print(f.read())
+            exit()
     sub = get_sub(url)
-    print(sub)
+    with open(cache_fn, "w+") as f:
+        f.write(sub)
+    get_summarization(sub, cache_fn)
+    # print(summ)
 
 if __name__ == '__main__':
     main()

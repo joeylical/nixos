@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 let
-  url = "https://huggingface.co/QuantFactory/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct.Q4_0.gguf?download=true";
+  url = "https://huggingface.co/QuantFactory/Llama-3.2-3B-Instruct-GGUF/resolve/main/Llama-3.2-3B-Instruct.Q8_0.gguf?download=true";
   model = "ggml-model-q4_0.gguf";
   llama_override = if (config.networking.hostName == "homeserver" || config.networking.hostName ==
     "laptop") then {
