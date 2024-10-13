@@ -7,6 +7,7 @@
       neovide
       ansible-language-server
       nil
+      lazygit
     ];
 
     home.sessionVariables = {
@@ -110,6 +111,7 @@
         pkgs.vimExtraPlugins.sqls-nvim
         pkgs.vimPlugins.orgmode
         pkgs.vimPlugins.lspkind-nvim
+        pkgs.vimPlugins.lazygit-nvim
       ];
     };
   };

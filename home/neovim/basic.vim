@@ -29,6 +29,8 @@ set mouse=a
 
 set cursorline
 
+set signcolumn=yes
+
 let g:mapleader = ","
 
 nnoremap <c-h> <c-w>h
@@ -44,6 +46,9 @@ nnoremap <m-l> :bn<cr>
 imap <c-v> <esc>p
 map <c-a> <esc><esc>ggVG
 
+nnoremap <leader>z :lua _lazygit_toggle()<cr>
+
+nnoremap <leader>, :WhichKey<cr>
 
 function Close_cur_buf()
     if 1 == len(getbufinfo({'buflisted':1}))
