@@ -4,7 +4,7 @@ let
   model = "ggml-model-q4_0.gguf";
   llama_override = if (config.networking.hostName == "homeserver" || config.networking.hostName ==
     "laptop") then {
-      rocmSupport = true;
+      # rocmSupport = true;
     } else {};
 in
 {

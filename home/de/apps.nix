@@ -50,7 +50,6 @@
 
     onedriver
 
-    quickgui
     quickemu
     qemu
   ];

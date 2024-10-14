@@ -118,7 +118,7 @@
     enableAllFirmware = true;
     opengl = {
       enable = true;
-      driSupport = true;
+      # driSupport = true;
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         amdvlk
@@ -129,7 +129,7 @@
   };
 
   # sound
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -178,7 +178,7 @@
   environment.systemPackages = with pkgs; [
     blueman
     bluez
-    linuxKernel.packages.linux_zen.amdgpu-pro
+    # linuxKernel.packages.linux_zen.amdgpu-pro
     linuxKernel.packages.linux_zen.nvidia_x11
     ryzenadj
   ];

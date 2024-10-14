@@ -82,7 +82,7 @@
     };
 
     master = {
-      new_is_master = false;
+      # new_is_master = false;
       no_gaps_when_only = true;
     };
 
