@@ -8,8 +8,8 @@ in if enable then
     samba = {
       enable = true;
       nsswins = true;
-      enableNmbd = true;
-      enableWinbindd = true;
+      nmbd.enable = true;
+      winbindd.enable = true;
     };
 
     avahi = {

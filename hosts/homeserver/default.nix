@@ -35,8 +35,8 @@
   services.samba = {
     enable = true;
     nsswins = true;
-    enableNmbd = true;
-    enableWinbindd = true;
+    nmbd.enable = true;
+    winbindd.enable = true;
     securityType = "user";
     openFirewall = true;
     extraConfig = ''

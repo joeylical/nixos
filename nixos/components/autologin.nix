@@ -5,6 +5,6 @@ let
 in
 {
   
-  services.xserver.displayManager.autoLogin.user = userName;
-  services.xserver.displayManager.sddm.settings.AutoLogin.User = userName;
+  services.displayManager.autoLogin.user = userName;
+  services.displayManager.sddm.settings.AutoLogin.User = userName;
 }

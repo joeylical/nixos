@@ -212,7 +212,7 @@
       "float, class:(yesplaymusic)"
       "float, class:(onedriver)"
       "float, class:(QQ)"
-      "center, floating:1"
+      # "center, floating:1"
       "float,class:^(Zotero)$,title:Zotero Settings"
       "center,class:^(Zotero)$,title:Zotero Settings"
       "noanim,class:^(Zotero)$,title:Zotero Settings"

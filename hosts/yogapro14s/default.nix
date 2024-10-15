@@ -24,6 +24,9 @@
     kernelParams = [
       "amd_pstate=active"
       "amdgpu.abmlevel=0"
+      "mem_sleep_default=deep"
+      "pcie_aspm.policy=powersupersave"
+      "acpi.prefer_microsoft_dsm_guid=1"
     ];
 
     loader = {
@@ -116,10 +119,9 @@
   # more hardware settings
   hardware = {
     enableAllFirmware = true;
-    opengl = {
+    graphics = {
       enable = true;
-      # driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         amdvlk
         vaapiVdpau

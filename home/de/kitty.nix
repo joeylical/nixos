@@ -19,6 +19,8 @@
       shell = "zsh -i";
       window_padding_width = 8;
       include = "theme";
+      cursor = "none";
+      cursor_shape = "block";
     };
   };
 
