@@ -94,14 +94,14 @@
       };
       # end of laptop
 
-      wsl = nixpkgs.lib.nixosSystem rec {
+      wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = with nixpkgs; [
           # add wsl modules
           inputs.nixos-wsl.nixosModules.wsl
           ./nixos
-          ./nixos/phy/docker.nix
+          # ./nixos/phy/docker.nix
 
           {
             nixpkgs = {
@@ -132,9 +132,10 @@
             #   pkgs.cudatoolkit
             # ];
             users.users."${userName}".extraGroups = [ "docker" ];
-            virtualisation.docker.rootless = {
+            virtualisation.docker = {
               enable = true;
-              setSocketVariable = true;
+              enableOnBoot = false;
+              # setSocketVariable = true;
             };
           }
 
