@@ -20,6 +20,7 @@
           "clock"
         ];
         modules-right = [
+          "custom/darkmode"
           "custom/weather"
           "idle_inhibitor"
           "pulseaudio"
@@ -41,6 +42,10 @@
           "locale"= "C";
         };
 
+        "custom/darkmode" = {
+          format="󰔎";
+          "on-click" = "change_mode.py toggle";
+        };
         "custom/weather" = {
           format = "{}";
           "return-type" = "json";
@@ -170,9 +175,9 @@
         padding: 0px 4px;
         margin: 4px 6px;
         border-style: solid;
-        border-color: @theme_bg_color;
+        border-color: transparent;
         border-width: 1px;
-        /* border-radius: 5px; */
+        /* border-radius: 2px; */
         /* background-color: alpha(@theme_fg_color, 0.1); */
       }
 
@@ -199,6 +204,7 @@
       #custom-lock,
       #custom-reboot,
       #custom-power,
+      #custom-darkmode,
       #custom-weather,
       #idle_inhibitor,
       #battery,

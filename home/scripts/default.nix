@@ -6,6 +6,7 @@ let
     "getweather.py"
     "getweather1.py"
     "condense"
+    "change_mode.py"
   ];
 
   shellscripts = [
