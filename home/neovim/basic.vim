@@ -43,8 +43,18 @@ nnoremap <m-k> 5kzz
 nnoremap <m-h> :bp<cr>
 nnoremap <m-l> :bn<cr>
 
-imap <c-v> <esc>p
-map <c-a> <esc><esc>ggVG
+" Emacs key-bindings in insert mode
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <M-b> <C-o>b
+inoremap <M-f> <C-o>w
+inoremap <C-w> <Esc>dbcl
+inoremap <C-u> <Esc>d0cl
+inoremap <C-k> <Esc><Right>C
+inoremap <C-d> <Esc><Right>s
+inoremap <M-d> <C-o>de
 
 nnoremap <leader>z :lua _lazygit_toggle()<cr>
 
