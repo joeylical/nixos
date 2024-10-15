@@ -167,22 +167,27 @@
       #workspaces button {
         /* all: unset; */
         /* box-shadow: inset 0 -3px transparent;  Use box-shadow instead of border so the text isn't offset */
-        padding: 0px 8px;
-        margin: 2px 2px;
-        border-radius: 5px;
+        padding: 0px 4px;
+        margin: 4px 6px;
+        border-style: solid;
+        border-color: @theme_bg_color;
+        border-width: 1px;
+        /* border-radius: 5px; */
         /* background-color: alpha(@theme_fg_color, 0.1); */
       }
 
       #workspaces button.active {
         opacity: 1;
-        color: @theme_selected_fg_color;
-        background-color: @theme_selected_bg_color;
+        /* color: @theme_selected_fg_color; */
+        /* background-color: @theme_selected_bg_color; */
+        border-top-color: @theme_text_color;
       }
 
       #workspaces button:hover {
         opacity: 1;
-        color: @theme_selected_fg_color;
-        background-color: mix(@theme_selected_bg_color, @theme_bg_color, 0.2);
+        /* color: @theme_selected_fg_color; */
+        /* background-color: mix(@theme_selected_bg_color, @theme_bg_color, 0.2); */
+        border-top-color: @theme_text_color;
       }
       
       #clock {
