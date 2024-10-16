@@ -160,6 +160,16 @@
           ./nixos/phy/docker.nix
           ./nixos/services
 
+          {
+            nixpkgs = {
+              config.allowUnfree = true;
+              overlays = [
+                nixneovimplugins.overlays.default
+                inputs.llama-cpp.overlays.default
+              ];
+            };
+          }
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

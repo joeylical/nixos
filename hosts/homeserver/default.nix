@@ -37,17 +37,17 @@
     nsswins = true;
     nmbd.enable = true;
     winbindd.enable = true;
-    securityType = "user";
     openFirewall = true;
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = homeserver
-      netbios name = homeserver
-      protocol = SMB3
-      guest account = nobody
-      map to guest = bad user
-    '';
-    shares = {
+    settings = {
+      global = {
+        security = "user";
+        "workgroup" = "WORKGROUP";
+        "server string" = "homeserver";
+        "netbios name" = "homeserver";
+        "protocol" = "SMB3";
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
       public = {
         path = "/storage/";
         browseable = "yes";
