@@ -55,6 +55,29 @@
   }: 
   let
     inherit (import ./config.nix) userName;
+    commonModule = desk_env: [
+        ./nixos
+
+        {
+          nixpkgs = {
+            config.allowUnfree = true;
+            overlays = [
+              nixneovimplugins.overlays.default
+              inputs.llama-cpp.overlays.default
+            ];
+          };
+        }
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home 的参数
+          home-manager.extraSpecialArgs = inputs // {desktop_env=desk_env;} ;
+          home-manager.users."${userName}" = import ./home;
+        }
+    ];
   in
   {
 
@@ -62,34 +85,13 @@
       laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = [
+        modules = commonModule(true) ++ [
           ./hosts/yogapro14s
-          ./nixos
           ./nixos/components
           ./nixos/phy/rocmrt.nix
           ./nixos/phy/docker.nix
           # ./nixos/services/zerotier.nix
           ./nixos/services/epp.nix
-
-          {
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                nixneovimplugins.overlays.default
-                inputs.llama-cpp.overlays.default
-              ];
-            };
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home 的参数
-            home-manager.extraSpecialArgs = inputs // {desktop_env=true;} ;
-            home-manager.users."${userName}" = import ./home;
-          }
         ];
       };
       # end of laptop
@@ -97,21 +99,11 @@
       wsl = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
-        modules = with nixpkgs; [
+        modules = commonModule(false) ++ [
           # add wsl modules
           inputs.nixos-wsl.nixosModules.wsl
-          ./nixos
           # ./nixos/phy/docker.nix
-
           {
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                nixneovimplugins.overlays.default
-                inputs.llama-cpp.overlays.default
-              ];
-            };
-
             wsl = {
               enable = true;
               defaultUser = "${userName}";
@@ -138,47 +130,17 @@
               # setSocketVariable = true;
             };
           }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = inputs // {desktop_env=false;} ;
-            home-manager.users."${userName}" = import ./home;
-          }
         ];
       };
       # end of wsl
 
       homeserver = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        modules = commonModule(false) ++ [
           ./hosts/homeserver
-          ./nixos
           ./nixos/phy/rocmrt.nix
           ./nixos/phy/docker.nix
           ./nixos/services
-
-          {
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                nixneovimplugins.overlays.default
-                inputs.llama-cpp.overlays.default
-              ];
-            };
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home 的参数
-            home-manager.extraSpecialArgs = inputs // {desktop_env=false;} ;
-            home-manager.users."${userName}" = import ./home;
-          }
         ];
       };
       # end of miniserver
