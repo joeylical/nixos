@@ -32,7 +32,7 @@ def get_sub(url):
         else:
             run(f'yt-dlp -f "wa" -x --audio-format mp3 "{url}" -o output')
             run("ffmpeg -i output.mp3 -acodec pcm_s16le -ar 16000 output.wav")
-            os.system("whisper-cpp -m /storage/whisper/ggml-small.bin -l auto -f output.wav -otxt 2>/dev/null |tee text.txt")
+            os.system("whisper-cpp -m /storage/whisper/ggml-tiny-q5_1.bin -l auto -f output.wav -otxt 2>/dev/null |tee text.txt")
             os.system('ls -lh text.txt')
             with open('text.txt', 'r') as f:
                 text = f.read()
