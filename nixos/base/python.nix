@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  enable = true;
-in if enable then
 {
   environment.systemPackages = with pkgs; [
     (python3.withPackages (ps: with ps; [
@@ -16,5 +13,4 @@ in if enable then
         pillow
     ]))
   ];
-
-} else { }
+}
