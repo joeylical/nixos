@@ -16,7 +16,7 @@ in
     defaultLocale = "en_US.UTF-8";
   };
 
-  environment.sessionVariables = rec {
+  environment.sessionVariables = {
     CITY = city;
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";

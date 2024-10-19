@@ -89,7 +89,6 @@
           ./hosts/yogapro14s
           ./nixos/components
           ./nixos/phy/rocmrt.nix
-          ./nixos/phy/docker.nix
           # ./nixos/services/zerotier.nix
           ./nixos/services/epp.nix
         ];
@@ -102,7 +101,6 @@
         modules = commonModule(false) ++ [
           # add wsl modules
           inputs.nixos-wsl.nixosModules.wsl
-          # ./nixos/phy/docker.nix
           {
             wsl = {
               enable = true;
@@ -123,12 +121,6 @@
             # environment.systemPackages = [
             #   pkgs.cudatoolkit
             # ];
-            users.users."${userName}".extraGroups = [ "docker" ];
-            virtualisation.docker = {
-              enable = true;
-              enableOnBoot = false;
-              # setSocketVariable = true;
-            };
           }
         ];
       };
@@ -139,7 +131,6 @@
         modules = commonModule(false) ++ [
           ./hosts/homeserver
           ./nixos/phy/rocmrt.nix
-          ./nixos/phy/docker.nix
           ./nixos/services
         ];
       };
