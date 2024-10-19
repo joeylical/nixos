@@ -12,6 +12,7 @@
     swaylock-effects
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
+    gtk2
     gtk3
     gtk4
     wl-clipboard
@@ -51,7 +52,6 @@
   ];
 
   environment.sessionVariables.PATH = "${pkgs.libsForQt5.polkit-kde-agent.out}/libexec";
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 
   programs = {

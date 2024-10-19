@@ -1,8 +1,5 @@
-{config, ... }:
+{ ... }:
 
-let
-  enable = true;
-in if enable then
 {
   services = {
     samba = {
@@ -23,4 +20,4 @@ in if enable then
 
   # open UDP 137 for samba
   networking.firewall.allowedUDPPorts = [ 137 ];
-} else { }
+}
