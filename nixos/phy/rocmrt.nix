@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-
-let
-  enable = true;
-in if enable then
+{ config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     rocmPackages.rocm-smi
@@ -14,4 +10,4 @@ in if enable then
   ];
 
   environment.sessionVariables.HSA_OVERRIDE_GFX_VERSION = "10.3.0";
-} else { }
+}

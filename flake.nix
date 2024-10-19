@@ -99,29 +99,7 @@
         system = "x86_64-linux";
 
         modules = commonModule(false) ++ [
-          # add wsl modules
-          inputs.nixos-wsl.nixosModules.wsl
-          {
-            wsl = {
-              enable = true;
-              defaultUser = "${userName}";
-            };
-            
-            networking.hostName = "wsl"; # Define your hostname.
-            environment.sessionVariables = {
-              LD_LIBRARY_PATH = "/usr/lib/wsl/lib";
-            };
-            # environment.sessionVariables = {
-            #   LD_LIBRARY_PATH = "/usr/lib/wsl/lib:${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib";
-            #   CUDA_PATH = "${pkgs.cudatoolkit}";
-            #   EXTRA_LDFLAGS = "-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib";
-            #   EXTRA_CCFLAGS = "-I/usr/include";
-            # };
-            #
-            # environment.systemPackages = [
-            #   pkgs.cudatoolkit
-            # ];
-          }
+          ./hosts/wsl
         ];
       };
       # end of wsl
