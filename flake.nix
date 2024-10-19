@@ -103,6 +103,7 @@
         system = "x86_64-linux";
 
         modules = commonModule(false) ++ [
+          inputs.nixos-wsl.nixosModules.wsl
           ./hosts/wsl
         ];
       };

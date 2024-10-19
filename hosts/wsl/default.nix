@@ -1,7 +1,8 @@
-{ inputs, userName, ... }:
-{
+{ ... }:
+let
+  inherit (import ../../config.nix) userName;
+in {
   imports = [
-    inputs.nixos-wsl.nixosModules.wsl
   ];
 
   wsl = {

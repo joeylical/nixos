@@ -2,7 +2,7 @@
 let
   inherit (import ../../config.nix) userName;
   driver = if config.networking.hostName == "wsl" then
-      "null"
+      null
     else
       "btrfs";
 in
