@@ -1,7 +1,6 @@
 { config, pkgs, lib, environment, nixneovimplugins, ... }:
 {
-  config = let
-  in {
+  config = {
     home.packages =with pkgs; [
       (neovim-qt.override { neovim = config.programs.neovim.finalPackage; })
       neovide
@@ -91,7 +90,10 @@
           config = lib.fileContents ./plugs/symoutline.vim;
         }
         # https://github.com/folke/which-key.nvim
-        pkgs.vimPlugins.which-key-nvim
+        {
+          plugin = pkgs.vimPlugins.which-key-nvim;
+          config = lib.fileContents ./plugs/which-key.vim;
+        }
 
         {
           plugin = pkgs.vimPlugins.flash-nvim;

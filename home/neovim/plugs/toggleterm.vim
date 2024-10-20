@@ -1,10 +1,7 @@
-nnoremap <c-t> :ToggleTerm<cr>
+nnoremap <c-t> :ToggleTerm direction=horizontal<cr>
 nnoremap <m-t> :ToggleTerm direction=float<cr>
-tnoremap <ESC><ESC> <c-\><c-n>
-" tnoremap <c-h> :wincmd h<cr>
-" tnoremap <c-j> :wincmd j<cr>
-" tnoremap <c-k> :wincmd k<cr>
-" tnoremap <c-l> :wincmd l<cr>
+" nnoremap <leader>tt :ToggleTerm direction=tab<cr>
+tnoremap <esc><esc> <c-\><c-n>:ToggleTerm<cr>
 
 lua <<EOF
     require('toggleterm').setup({

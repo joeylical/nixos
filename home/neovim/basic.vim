@@ -44,8 +44,8 @@ nnoremap <m-h> :bp<cr>
 nnoremap <m-l> :bn<cr>
 
 " Emacs key-bindings in insert mode
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
+inoremap <C-a> <esc>^i
+inoremap <C-e> <esc>A
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <M-b> <C-o>b
@@ -56,7 +56,15 @@ inoremap <C-k> <Esc><Right>C
 inoremap <C-d> <Esc><Right>s
 inoremap <M-d> <C-o>de
 
-nnoremap <leader>z :lua _lazygit_toggle()<cr>
+nnoremap <leader>g :lua _lazygit_toggle()<cr>
+
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+nnoremap <leader>th :ToggleTerm direction=horizontal<cr>
+nnoremap <leader>tf :ToggleTerm direction=float<cr>
 
 nnoremap <leader>, :WhichKey<cr>
 
@@ -128,16 +136,6 @@ nnoremap <leader>w  :call SetMode(v:false)<cr>
 set guifont=CaskaydiaCove\ NFM:h12
 let g:neovide_cursor_animation_length = 0
 let g:neovide_remember_window_size = v:true
-
-nnoremap <leader>1 :BufferLineGoToBuffer 1<CR>
-nnoremap <leader>2 :BufferLineGoToBuffer 2<CR>
-nnoremap <leader>3 :BufferLineGoToBuffer 3<CR>
-nnoremap <leader>4 :BufferLineGoToBuffer 4<CR>
-nnoremap <leader>5 :BufferLineGoToBuffer 5<CR>
-nnoremap <leader>6 :BufferLineGoToBuffer 6<CR>
-nnoremap <leader>7 :BufferLineGoToBuffer 7<CR>
-nnoremap <leader>8 :BufferLineGoToBuffer 8<CR>
-nnoremap <leader>9 :BufferLineGoToBuffer 9<CR>
 
 " vimrc loader
 if filereadable("./.vimrc")
