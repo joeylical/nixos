@@ -3,7 +3,7 @@
 {
   qt = {
     enable = true;
-    platformTheme = "gtk2";
+    platformTheme = "qt5ct";
     # style = "gtk2";
   };
 }

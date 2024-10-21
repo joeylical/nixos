@@ -11,7 +11,7 @@ mode = sys.argv[1].lower()
 if mode not in ('dark', 'light', 'toggle'):
     exit()
 
-MODE_DARK = 'Darkest-Solid'
+MODE_DARK = 'Dark'
 MODE_LIGHT = 'Light'
 
 HOME_DIR = os.environ['HOME']

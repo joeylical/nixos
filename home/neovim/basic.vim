@@ -116,6 +116,7 @@ function SetMode(dark)
         colorscheme material-lighter
         set background=light
     endif
+    hi Normal guibg=system("grep -o "[^_]bg_color:[#a-z0-9]*" /etc/profiles/per-user/nixos/share/themes/`grep -o "Flat[a-zA-Z\-]*" ~/.gtkrc-2.0`/gtk-2.0/gtkrc")
 endfunction
 
 function AutoSetMode()
