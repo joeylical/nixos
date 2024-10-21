@@ -224,6 +224,7 @@
     ".config/hypr/hyprpaper.conf".text = ''
       preload = ~/.wallpaper/wallpaper
       wallpaper = eDP-1,~/.wallpaper/wallpaper
+      wallpaper = DP-1,~/.wallpaper/wallpaper
       ipc = on
     '';
     # ".config/hyprland-autoname-workspaces/config.toml".text = builtins.readFile
