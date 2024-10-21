@@ -1,3 +1,5 @@
+@import url("/etc/profiles/per-user/nixos/share/themes/Flat-Remix-GTK-Cyan-Light/gtk-4.0/gtk.css")
+
 tooltip {
     color: @theme_text_color;
     /*color: @theme_fg_color;*/
@@ -15,3 +17,9 @@ tooltip label {
     padding: 0px;
     margin: 0px;
 }
+
+.menu * {
+    color: @theme_text_color;
+    background-color: @theme_bg_color;
+}
+

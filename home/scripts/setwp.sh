@@ -20,3 +20,4 @@ esac
 cp -f $file ~/.wallpaper/wallpaper
 hyprctl hyprpaper preload "$file"
 hyprctl hyprpaper wallpaper "eDP-1,$file"
+hyprctl hyprpaper wallpaper "DP-1,$file"

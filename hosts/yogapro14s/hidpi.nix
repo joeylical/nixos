@@ -13,7 +13,7 @@
     QT_ENABLE_HIGHDPI_SCALING = "1";
     # QT_FONT_DPI = "250";
     QT_QPA_PLATFORM = "wayland";
-    QT_QPA_PLATFORMTHEME="qt5ct";
+    QT_QPA_PLATFORMTHEME="gtk2";
     NIXOS_OZONE_WL = "1";
   };
 }
