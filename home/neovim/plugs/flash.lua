@@ -1,4 +1,3 @@
-lua <<EOF
 require('flash').setup({
     search = {
         multi_window = false,
@@ -12,4 +11,3 @@ require('flash').setup({
         }
     }
 })
-EOF

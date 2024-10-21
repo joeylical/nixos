@@ -31,6 +31,8 @@ set cursorline
 
 set signcolumn=yes
 
+set termguicolors
+
 let g:mapleader = ","
 
 nnoremap <c-h> <c-w>h
@@ -58,13 +60,23 @@ inoremap <M-d> <C-o>de
 
 nnoremap <leader>g :lua _lazygit_toggle()<cr>
 
+lua require('which-key').add({{'<leader>f', group='Telescope'}})
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+lua require('which-key').add({{'<leader>f', group='ToggleTerm'}})
 nnoremap <leader>th :ToggleTerm direction=horizontal<cr>
 nnoremap <leader>tf :ToggleTerm direction=float<cr>
+
+lua require('which-key').add({{'<leader>f', group='Glance'}})
+nnoremap <leader>dr <CMD>Glance references<CR>
+nnoremap <leader>dd <CMD>Glance definitions<CR>
+nnoremap <leader>dy <CMD>Glance type_definitions<CR>
+nnoremap <leader>dm <CMD>Glance implementations<CR>
+
+noremap <F2> :SymbolsOutline<cr>
 
 nnoremap <leader>, :WhichKey<cr>
 
@@ -139,8 +151,8 @@ let g:neovide_remember_window_size = v:true
 
 " vimrc loader
 if filereadable("./.vimrc")
-    source ./.vimrc
+    autocmd VimEnter * source ./.vimrc
 endif
 if filereadable("./.vimrc.lua")
-    source ./.vimrc.lua
+    autocmd VimEnter * source ./.vimrc.lua
 endif

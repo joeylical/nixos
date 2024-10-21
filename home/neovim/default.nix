@@ -23,10 +23,14 @@
       vimAlias = true;
       defaultEditor = true;
       extraConfig = lib.fileContents ./basic.vim;
+      extraLuaConfig = ''
+        vim.g.mapleader = ','
+      '';
       plugins = [
         {
           plugin = pkgs.vimPlugins.nvim-tree-lua;
-          config = lib.fileContents ./plugs/nvimtree.vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/nvimtree.lua;
         }
 
         {
@@ -44,7 +48,8 @@
         pkgs.vimPlugins.cmp-nvim-lsp
         {
           plugin = pkgs.vimPlugins.nvim-cmp;
-          config = lib.fileContents ./plugs/completion.vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/completion.lua;
         }
         # LSP END
         
@@ -60,7 +65,17 @@
         {
           plugin = pkgs.vimPlugins.lualine-nvim;
           type = "lua";
-          config = "require('lualine').setup()";
+          config = ''
+            require('lualine').setup({
+              options={
+                close_command = 'bd %',
+                disabled_filetypes={
+                  statusline={'NvimTree'},
+                  winbar={'NvimTree'}
+                }
+              }
+            })
+          '';
         }
 
         {
@@ -70,45 +85,42 @@
         
         {
           plugin = pkgs.vimPlugins.glance-nvim;
-          config = lib.fileContents ./plugs/glance.vim;
         }
 
         {
           plugin = pkgs.vimPlugins.nvim-comment;
-          config = lib.fileContents ./plugs/comment.vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/comment.lua;
         }
         {
           plugin = pkgs.vimPlugins.toggleterm-nvim;
-          config = lib.fileContents ./plugs/toggleterm.vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/toggleterm.lua;
         }
         {
           plugin = pkgs.vimPlugins.bufferline-nvim;
-          config = lib.fileContents ./plugs/bufferline.vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/bufferline.lua;
         }
         {
           plugin = pkgs.vimPlugins.symbols-outline-nvim;
-          config = lib.fileContents ./plugs/symoutline.vim;
         }
         # https://github.com/folke/which-key.nvim
         {
           plugin = pkgs.vimPlugins.which-key-nvim;
-          config = lib.fileContents ./plugs/which-key.vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/which-key.lua;
         }
 
         {
           plugin = pkgs.vimPlugins.flash-nvim;
-          config = lib.fileContents ./plugs/flash.vim;
-        }
-
-        {
-          plugin = pkgs.vimPlugins.ansible-vim;
+          type = "lua";
+          config = lib.fileContents ./plugs/flash.lua;
         }
 
         {
           plugin = pkgs.vimPlugins.telescope-nvim;
-          config = lib.fileContents ./plugs/telescope.vim;
         }
-        pkgs.vimPlugins.yuck-vim
         pkgs.vimPlugins.vim-vsnip
         pkgs.vimExtraPlugins.sqls-nvim
         pkgs.vimPlugins.orgmode
