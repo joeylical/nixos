@@ -110,13 +110,27 @@ autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(win
 " colorscheme one
 function SetMode(dark)
     if a:dark == v:true
-        colorscheme material-deep-ocean
         set background=dark
+        colorscheme material-deep-ocean
     else
-        colorscheme material-lighter
         set background=light
+        colorscheme material-lighter
     endif
-    hi Normal guibg=system("grep -o "[^_]bg_color:[#a-z0-9]*" /etc/profiles/per-user/nixos/share/themes/`grep -o "Flat[a-zA-Z\-]*" ~/.gtkrc-2.0`/gtk-2.0/gtkrc")
+    
+    let useTheme = filereadable("~/.gtkrc-2")
+    if useTheme
+        useTheme = useTheme && system("ls /etc/profiles/per-user/nixos/share/themes/|wc -l") != 0
+    endif
+    if useTheme
+        let bg_color=system("grep -o "[^_]bg_color:[#a-z0-9]*" /etc/profiles/per-user/nixos/share/themes/`grep -o "Flat[a-zA-Z\-]*" ~/.gtkrc-2.0`/gtk-2.0/gtkrc")
+        hi Normal guibg=bg_color
+    endif
+    hi clear BufferLineFill
+    hi link BufferLineFill Normal
+    " hi clear BufferLineBackground 
+    " hi link BufferLineBackground Normal
+    hi clear BufferLineOffsetSeparator
+    hi link BufferLineOffsetSeparator VertSplit
 endfunction
 
 function AutoSetMode()
