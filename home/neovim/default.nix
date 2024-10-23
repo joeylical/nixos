@@ -4,9 +4,11 @@
     home.packages =with pkgs; [
       (neovim-qt.override { neovim = config.programs.neovim.finalPackage; })
       neovide
-      ansible-language-server
       nil
       lazygit
+      luajit
+      # luajitPackages.lua-lsp
+      lua-language-server
     ];
 
     home.sessionVariables = {

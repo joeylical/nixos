@@ -91,7 +91,8 @@ function Close_cur_buf()
 endfunction
 
 nnoremap <m-w> :call Close_cur_buf()<cr>
-nnoremap <c-w> :close<cr>
+nnoremap <m-x> :close<cr>
+nnoremap <m-v> :vsplit<cr>
 
 " nnoremap <c-up> :resize -2<cr>
 " nnoremap <c-down> :resize +2<cr>
