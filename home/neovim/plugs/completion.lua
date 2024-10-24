@@ -111,15 +111,30 @@ sources = cmp.config.sources({
 formatting = {
   fields = { "kind", "abbr", "menu" },
   format = function(entry, vim_item)
-    local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-    local strings = vim.split(kind.kind, "%s", { trimempty = true })
-    kind.kind = " " .. (strings[1] or "") .. " "
-    kind.menu = "    (" .. (strings[2] or "") .. ")"
-
-    return kind
+      -- Kind icons
+      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+      -- Source
+      vim_item.menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+      })[entry.source.name]
+      return vim_item
   end,
 },
 })
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {border = 'rounded'}
+)
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {border = 'rounded'}
+)
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype('gitcommit', {

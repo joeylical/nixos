@@ -94,6 +94,29 @@ nnoremap <m-w> :call Close_cur_buf()<cr>
 nnoremap <m-x> :close<cr>
 nnoremap <m-v> :vsplit<cr>
 
+nmap <m-n> ]mzt
+nmap <m-p> [mzt
+
+let g:midmode = 0
+
+function ToggleMidMode()
+    let g:midmode = 1 - g:midmode
+
+    if g:midmode == 1
+        execute "nnoremap j jzz"
+        execute "nnoremap k kzz"
+        execute "nnoremap <c-f> <c-f>zz"
+        execute "nnoremap <c-b> <c-b>zz"
+    else
+        execute "unmap j"
+        execute "unmap k"
+        execute "unmap <c-f>"
+        execute "unmap <c-b>"
+    endif
+endfunction
+
+nnoremap <m-m> :call ToggleMidMode()<cr>
+
 " nnoremap <c-up> :resize -2<cr>
 " nnoremap <c-down> :resize +2<cr>
 " nnoremap <c-left> :vertical resize +2<cr>
