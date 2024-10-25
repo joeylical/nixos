@@ -76,7 +76,7 @@ nnoremap <leader>dd <CMD>Glance definitions<CR>
 nnoremap <leader>dy <CMD>Glance type_definitions<CR>
 nnoremap <leader>dm <CMD>Glance implementations<CR>
 
-noremap <F2> :SymbolsOutline<cr>
+" noremap <F2> :SymbolsOutline<cr>
 
 nnoremap <leader>, :WhichKey<cr>
 
@@ -122,7 +122,7 @@ nnoremap <m-m> :call ToggleMidMode()<cr>
 " nnoremap <c-left> :vertical resize +2<cr>
 " nnoremap <c-right> :vertical resize -2<cr>
 
-autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
+" autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 
 " set foldmethod=indent

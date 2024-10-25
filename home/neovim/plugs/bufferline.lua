@@ -2,6 +2,7 @@ require('bufferline').setup({
     options = {
         mode = "buffers",
         number = "ordinal",
+        close_command = require('bufdelete').bufdelete,
         indicator = {
             style = 'underline'
         },

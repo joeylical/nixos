@@ -70,7 +70,6 @@
           config = ''
             require('lualine').setup({
               options={
-                close_command = 'bd %',
                 disabled_filetypes={
                   statusline={'NvimTree'},
                   winbar={'NvimTree'}
@@ -105,7 +104,9 @@
           config = lib.fileContents ./plugs/bufferline.lua;
         }
         {
-          plugin = pkgs.vimPlugins.symbols-outline-nvim;
+          plugin = pkgs.vimPlugins.outline-nvim;
+          type = "lua";
+          config = lib.fileContents ./plugs/outline.lua;
         }
         # https://github.com/folke/which-key.nvim
         {
@@ -128,6 +129,7 @@
         pkgs.vimPlugins.orgmode
         pkgs.vimPlugins.lspkind-nvim
         pkgs.vimPlugins.lazygit-nvim
+        pkgs.vimPlugins.bufdelete-nvim
       ];
     };
   };
