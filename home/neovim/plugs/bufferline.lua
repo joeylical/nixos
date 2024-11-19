@@ -12,7 +12,8 @@ require('bufferline').setup({
                 filetype = "NvimTree",
                 text = "Files",
                 text_align = "center",
-                separator = true
+                separator = true,
+                highlight = "Directory"
             }
         }
     }

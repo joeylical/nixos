@@ -8,6 +8,8 @@
         direnv
 
         neofetch
+
+        ranger
       ];
 
       sessionVariables = {
@@ -44,6 +46,7 @@
       '';
       shellAliases = {
         # "ns" = "nix-shell --run zsh";
+        "icat" = "kitty +kitten icat";
       };
     };
   };

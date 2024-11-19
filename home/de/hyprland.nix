@@ -98,9 +98,8 @@
       "$mod, O, exec, MESA_LOADER_DRIVER_OVERRIDE=radeonsi kitty --single-instance"
       "$mod CTRL, O, exec, MESA_LOADER_DRIVER_OVERRIDE=radeonsi kitty --class floating --single-instance"
       "$mod, C, killactive"
-      "$mod, V, togglefloating"
+      "$mod, M, togglefloating"
       "$mod, P, pseudo"
-      "$mod, M, exit"
       "$mod, N, exec, setwp"
       "$mod, F, exec, themechanger && configure-gtk"
       "$mod, LEFT, movefocus, l"
@@ -143,6 +142,7 @@
       "$mod CTRL, L, exec, lockscreen"
       ", XF86Calculator, exec, qalculate-qt"
       ''$mod SHIFT, s, exec, grim -g "$(slurp -d)" $screen_file''
+      "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
     ];
 
     bindm = [
@@ -164,11 +164,13 @@
       "blueman-applet"
       "polkit-kde-authentication-agent-1"
       "hyprctl keyword 'device:syna2ba6:00-06cb:cec0-touchpad:enabled' false"
-      "easyeffects -w"
+      "easyeffects -q -l speaker"
       "swayidle -w timeout 60 lockscreen timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep lockscreen"
       "pkexec swayosd-libinput-backend"
       # "hyprland-autoname-workspaces"
       "hyprshade auto"
+      "wl-paste --type text --watch cliphist store"
+      "wl-paste --type image --watch cliphist store"
     ];
 
     windowrule = [

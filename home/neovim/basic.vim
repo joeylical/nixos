@@ -132,6 +132,14 @@ nnoremap <m-m> :call ToggleMidMode()<cr>
 " colorscheme gruvbox
 " colorscheme tokyonight-day
 " colorscheme one
+function RelinkColors()
+    hi clear BufferLineFill
+    hi link BufferLineFill Normal
+    hi clear BufferLineOffsetSeparator
+    hi link BufferLineOffsetSeparator VertSplit
+    hi clear NormalNC
+    hi link NormalNC Normal
+endfunction
 function SetMode(dark)
     if a:dark == v:true
         set background=dark
@@ -141,20 +149,12 @@ function SetMode(dark)
         colorscheme material-lighter
     endif
     
-    let useTheme = filereadable("~/.gtkrc-2")
+    let useTheme = filereadable(expand("~/.gtkrc-2.0")) && system("ls /etc/profiles/per-user/nixos/share/themes/|wc -l") != 0
     if useTheme
-        useTheme = useTheme && system("ls /etc/profiles/per-user/nixos/share/themes/|wc -l") != 0
-    endif
-    if useTheme
-        let bg_color=system("grep -o "[^_]bg_color:[#a-z0-9]*" /etc/profiles/per-user/nixos/share/themes/`grep -o "Flat[a-zA-Z\-]*" ~/.gtkrc-2.0`/gtk-2.0/gtkrc")
+        let bg_color=system("grep -o '[^_]bg_color:[#a-z0-9]*' /etc/profiles/per-user/nixos/share/themes/`grep -o 'Flat[a-zA-Z\-]*' ~/.gtkrc-2.0`/gtk-2.0/gtkrc | awk -F':' '{print $2}'")
         hi Normal guibg=bg_color
     endif
-    hi clear BufferLineFill
-    hi link BufferLineFill Normal
-    " hi clear BufferLineBackground 
-    " hi link BufferLineBackground Normal
-    hi clear BufferLineOffsetSeparator
-    hi link BufferLineOffsetSeparator VertSplit
+    lua vim.defer_fn(function() vim.cmd('call RelinkColors()') end, 200)
 endfunction
 
 function AutoSetMode()

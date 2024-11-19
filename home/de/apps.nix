@@ -52,6 +52,8 @@
 
     quickemu
     qemu
+
+    cliphist
   ];
 
   home.file.".config/hypr/hyprshade.toml".text = ''
