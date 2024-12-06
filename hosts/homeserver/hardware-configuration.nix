@@ -16,12 +16,12 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/64565e36-f5b3-4611-ad2f-19fd45831574";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "noatime" "nodiratime" "discard"];
     };
 
   fileSystems."/storage" =
     { device = "/dev/disk/by-uuid/6444e55f-b615-45d2-9c1c-8d9181938b6a";
-      options = [ "nofail" ];
+      options = [ "nofail" "noatime" "nodiratime" "discard"];
     };
 
   fileSystems."/boot" =

@@ -17,7 +17,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/4318e623-29a2-463d-821d-3a6504a0cc24";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "noatime" "nodiratime" "discard"];
     };
 
   boot.initrd.luks.devices."luks-fb70fe28-bd6e-493d-80ed-9d079a03eab3".device = "/dev/disk/by-uuid/fb70fe28-bd6e-493d-80ed-9d079a03eab3";
@@ -30,7 +30,7 @@
   fileSystems."/data" =
     { device = "/dev/disk/by-uuid/58D836CDD836A8E0";
       fsType = "ntfs-3g"; 
-      options = [ "rw" "uid=1000"];
+      options = [ "rw" "uid=1000" "noatime" "nodiratime" "discard"];
     };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

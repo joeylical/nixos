@@ -43,6 +43,8 @@
     };
   };
 
+  hardware.cpu.amd.ryzen-smu.enable = true;
+
   # swap
   swapDevices = [{
     device = "/var/lib/swapfile";

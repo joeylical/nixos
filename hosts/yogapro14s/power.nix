@@ -13,7 +13,7 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
-      ExecStart = "/run/current-system/sw/bin/ryzenadj -a 35 --power-saving";
+      ExecStart = ''/bin/sh -c "/run/current-system/sw/bin/ryzenadj -a 35 --power-saving && echo 1 > /proc/sys/vm/laptop_mode" '';
     };
     wantedBy = [ "multi-user.target" ];
     after = [
@@ -44,11 +44,11 @@
       TPSMAPI_ENABLE = 1;
       # Disks and Controllers
       DISK_DEVICES = "nvme0";
-      DISK_APM_LEVEL_ON_AC = "254 254";
+      DISK_APM_LEVEL_ON_AC = "128 128";
       DISK_APM_LEVEL_ON_BAT = "128 128";
       DISK_SPINDOWN_TIMEOUT_ON_AC = "12 12";
       DISK_SPINDOWN_TIMEOUT_ON_BAT = "12 12";
-      DISK_IOSCHED = "mq-deadline mq-deadline";
+      DISK_IOSCHED = "none none";
       SATA_LINKPWR_ON_AC = "med_power_with_dipm";
       SATA_LINKPWR_ON_BAT = "med_power_with_dipm";
       AHCI_RUNTIME_PM_ON_AC = "auto";
@@ -64,12 +64,14 @@
       RADEON_DPM_PERF_LEVEL_ON_BAT = "low";
       RADEON_DPM_STATE_ON_AC = "balanced";
       RADEON_DPM_STATE_ON_BAT = "battery";
+      AMDGPU_ABM_LEVEL_ON_AC = 0;
+      AMDGPU_ABM_LEVEL_ON_BAT = 3;
       # Kernel
       NMI_WATCHDOG = 0;
       # Networking
       WIFI_PWR_ON_AC = "off";
       WIFI_PWR_ON_BAT = "on";
-      WOL_DISABLE = "N";
+      WOL_DISABLE = "Y";
       # Platform
       PLATFORM_PROFILE_ON_AC = "balanced";
       PLATFORM_PROFILE_ON_BAT = "low-power";
@@ -89,8 +91,10 @@
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;
       # Radio Device Switching
-      DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
-      DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth";
+      DEVICES_TO_DISABLE_ON_STARTUP = "";
+      DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = "bluetooth wifi";
+      DEVICES_TO_DISABLE_ON_LAN_CONNECT = "wifi";
+      DEVICES_TO_ENABLE_ON_LAN_DISCONNECT = "wifi";
       # Radio Device Wizard
       # Runtime Power Management and ASPM
       RUNTIME_PM_ON_AC = "auto";

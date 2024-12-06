@@ -18,6 +18,8 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
 
+  hardware.cpu.amd.ryzen-smu.enable = true;
+
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 8 * 1024;

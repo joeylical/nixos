@@ -21,9 +21,9 @@
     gthumb
     stellarium
     go-musicfox
-    youtube-music
-    # koreader
-    # onlyoffice-bin
+    # youtube-music
+    koreader
+    onlyoffice-bin
     # wpsoffice
     # onedrivegui
     spotify-qt
