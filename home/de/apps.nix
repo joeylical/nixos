@@ -54,6 +54,8 @@
     qemu
 
     cliphist
+
+    remmina
   ];
 
   home.file.".config/hypr/hyprshade.toml".text = ''

@@ -20,13 +20,14 @@
           "clock"
         ];
         modules-right = [
+          "custom/tdp"
           "custom/darkmode"
           "custom/weather"
           "idle_inhibitor"
           "pulseaudio"
           "battery"
           "tray"
-          "group/group-power"
+          "custom/power"
         ];
         "hyprland/window" = {
           format = "";
@@ -40,6 +41,21 @@
         "clock" = {
           "format"= "{:%m-%d %H:%M}";
           "locale"= "C";
+        };
+
+        "custom/tdp" = {
+          format = "{}";
+          exec = "cat /tmp/tdp.txt || echo unset";
+          signal = 1;
+          interval = "once";
+          menu = "on-click";
+          "menu-file" = "$HOME/.config/waybar/tdp.xml";
+          "menu-actions" = {
+            "15w" = "sudo ryzenadj -a 15000 -b 15000 -c 10000 && echo 15w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
+            "25w" = "sudo ryzenadj -a 25000 -b 25000 -c 15000 && echo 25w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
+            "35w" = "sudo ryzenadj -a 35000 -b 35000 -c 20000 && echo 35w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
+            "65w" = "sudo ryzenadj -a 65000 -b 65000 -c 28000 && echo 65w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
+          };
         };
 
         "custom/darkmode" = {
@@ -96,44 +112,57 @@
           spacing = 2;
         };
 
-        "group/group-power" = {
-          orientation = "inherit";
-          drawer = {
-            "transition-duration" = 500;
-            "children-class" = "not-power";
-            "transition-left-to-right" = true;
-          };
-          modules = [
-            "custom/power"
-            "custom/quit"
-            "custom/lock"
-            "custom/reboot"
-          ];
-        };
-
-        "custom/quit" = {
-          format = "󰗼";
-          tooltip = false;
-          "on-click" = "hyprctl dispatch exit";
-        };
-
-        "custom/lock" = {
-          format = "󰍁";
-          tooltip = false;
-          "on-click" = "lockscreen";
-        };
-
-        "custom/reboot" = {
-          format = "󰜉";
-          tooltip = false;
-          "on-click" = "reboot";
-        };
-
         "custom/power" = {
-          format = "";
-          tooltip = false;
-          "on-click" = "shutdown now";
+          "format" = "⏻";
+            "tooltip"= false;
+            "menu"= "on-click";
+            "menu-file"= "$HOME/.config/waybar/power_menu.xml";
+            "menu-actions"= {
+              "shutdown"= "shutdown";
+              "reboot"= "reboot";
+              "suspend"= "systemctl suspend";
+              "hibernate"= "systemctl hibernate";
+            };
         };
+
+        # "group/group-power" = {
+        #   orientation = "inherit";
+        #   drawer = {
+        #     "transition-duration" = 500;
+        #     "children-class" = "not-power";
+        #     "transition-left-to-right" = true;
+        #   };
+        #   modules = [
+        #     "custom/power"
+        #     "custom/quit"
+        #     "custom/lock"
+        #     "custom/reboot"
+        #   ];
+        # };
+        #
+        # "custom/quit" = {
+        #   format = "󰗼";
+        #   tooltip = false;
+        #   "on-click" = "hyprctl dispatch exit";
+        # };
+        #
+        # "custom/lock" = {
+        #   format = "󰍁";
+        #   tooltip = false;
+        #   "on-click" = "lockscreen";
+        # };
+        #
+        # "custom/reboot" = {
+        #   format = "󰜉";
+        #   tooltip = false;
+        #   "on-click" = "reboot";
+        # };
+        #
+        # "custom/power" = {
+        #   format = "";
+        #   tooltip = false;
+        #   "on-click" = "shutdown now";
+        # };
       };
     };
     style = ''
@@ -206,6 +235,7 @@
       #custom-power,
       #custom-darkmode,
       #custom-weather,
+      #custom-tdp,
       #idle_inhibitor,
       #battery,
       #pulseaudio,
@@ -213,7 +243,7 @@
         margin-right: 8px;
       }
 
-      #tray menu {
+      menu {
         background-color: @theme_bg_color;
         color: @theme_fg_color;
         padding: 10px 0px;
@@ -221,16 +251,16 @@
         border: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.6);
       }
 
-      #tray menu menuitem {
+      menu menuitem {
         padding: 4px 10px;
       }
 
-      #tray menu separator {
+      menu separator {
         margin: 0px 2px;
         border-bottom: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.2);
       }
 
-      #tray menu menuitem:hover {
+      menu menuitem:hover {
         background-color: @theme_selected_bg_color;
         color: @theme_selected_fg_color;
       }
@@ -252,6 +282,75 @@
         padding: 0px;
         margin: 0px;
       }
+    '';
+  };
+
+  home.file = {
+    ".config/waybar/tdp.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <interface>
+        <object class="GtkMenu" id="menu">
+
+        <child>
+          <object class="GtkMenuItem" id="15w">
+            <property name="label">tdp: 15w</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkMenuItem" id="25w">
+            <property name="label">tdp: 25w</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkMenuItem" id="35w">
+            <property name="label">tdp: 35w</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkMenuItem" id="65w">
+            <property name="label">tdp: 65w</property>
+          </object>
+        </child>
+      </object>
+    </interface>
+    '';
+    ".config/waybar/power_menu.xml".text = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <interface>
+        <object class="GtkMenu" id="menu">
+
+        <child>
+          <object class="GtkMenuItem" id="suspend">
+            <property name="label">Suspend</property>
+              </object>
+        </child>
+
+        <child>
+          <object class="GtkMenuItem" id="hibernat">
+            <property name="label">Hibernate</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkMenuItem" id="shutdown">
+            <property name="label">Shutdown</property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkSeparatorMenuItem" id="delimiter1"/>
+        </child>
+
+        <child>
+          <object class="GtkMenuItem" id="reboot">
+            <property name="label">Reboot</property>
+          </object>
+        </child>
+      </object>
+    </interface>
     '';
   };
 }

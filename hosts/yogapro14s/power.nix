@@ -13,7 +13,8 @@
     serviceConfig = {
       Type = "oneshot";
       User = "root";
-      ExecStart = ''/bin/sh -c "/run/current-system/sw/bin/ryzenadj -a 35 --power-saving && echo 1 > /proc/sys/vm/laptop_mode" '';
+      # ExecStart = ''/bin/sh -c "/run/current-system/sw/bin/ryzenadj -a 35 --power-saving && echo 1 > /proc/sys/vm/laptop_mode" '';
+      ExecStart = ''/bin/sh -c "echo 1 > /proc/sys/vm/laptop_mode" '';
     };
     wantedBy = [ "multi-user.target" ];
     after = [

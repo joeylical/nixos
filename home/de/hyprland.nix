@@ -168,7 +168,7 @@
       "swayidle -w timeout 60 lockscreen timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep lockscreen"
       "pkexec swayosd-libinput-backend"
       # "hyprland-autoname-workspaces"
-      "hyprshade auto"
+      # "hyprshade auto"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
     ];

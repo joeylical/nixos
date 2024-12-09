@@ -22,6 +22,8 @@
     #   "/crypto_keyfile.bin" = null;
     # };
     kernelParams = [
+      "quiet"
+      "splash"
       "amd_pstate=active"
       "amdgpu.abmlevel=0"
       "mem_sleep_default=deep"
@@ -41,6 +43,17 @@
         consoleMode = "0"; # standard 80x25
       };
     };
+
+    plymouth = {
+      enable = true;
+      extraConfig = ''
+      [Daemon]
+      DeviceScale=250
+      '';
+    };
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    initrd.systemd.enable = true;
   };
 
   hardware.cpu.amd.ryzen-smu.enable = true;
