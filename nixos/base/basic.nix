@@ -34,6 +34,8 @@ in
     ffmpeg
 
     lm_sensors
+
+    devenv
   ];
 
   programs = {
@@ -45,7 +47,7 @@ in
     };
     zsh = {
       enable = true;
-      loginShellInit = "neofetch --disable packages editor resolution de wm wm_theme theme icons cursor";
+      # loginShellInit = "neofetch --disable packages editor resolution de wm wm_theme theme icons cursor";
     };
   };
 

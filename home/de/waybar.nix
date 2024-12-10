@@ -51,6 +51,7 @@
           menu = "on-click";
           "menu-file" = "$HOME/.config/waybar/tdp.xml";
           "menu-actions" = {
+            "5w" = "sudo ryzenadj -a 5000 -b 5000 -c 5000 && echo 5w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
             "15w" = "sudo ryzenadj -a 15000 -b 15000 -c 10000 && echo 15w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
             "25w" = "sudo ryzenadj -a 25000 -b 25000 -c 15000 && echo 25w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
             "35w" = "sudo ryzenadj -a 35000 -b 35000 -c 20000 && echo 35w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
@@ -118,8 +119,8 @@
             "menu"= "on-click";
             "menu-file"= "$HOME/.config/waybar/power_menu.xml";
             "menu-actions"= {
-              "shutdown"= "shutdown";
-              "reboot"= "reboot";
+              "shutdown"= "systemctl poweroff";
+              "reboot"= "systemctl reboot";
               "suspend"= "systemctl suspend";
               "hibernate"= "systemctl hibernate";
             };
@@ -292,6 +293,12 @@
         <object class="GtkMenu" id="menu">
 
         <child>
+          <object class="GtkMenuItem" id="5w">
+            <property name="label">tdp: 5w</property>
+          </object>
+        </child>
+
+        <child>
           <object class="GtkMenuItem" id="15w">
             <property name="label">tdp: 15w</property>
           </object>
@@ -338,10 +345,6 @@
           <object class="GtkMenuItem" id="shutdown">
             <property name="label">Shutdown</property>
           </object>
-        </child>
-        
-        <child>
-          <object class="GtkSeparatorMenuItem" id="delimiter1"/>
         </child>
 
         <child>

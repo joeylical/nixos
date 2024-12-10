@@ -7,7 +7,7 @@
         
         direnv
 
-        neofetch
+        # neofetch
 
         ranger
       ];

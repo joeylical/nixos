@@ -18,7 +18,7 @@
     "$mod" = "SUPER";
     "$screen_file" = "$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
     monitor = [
-      "eDP-1,3072x1920@120,auto,2"
+      "eDP-1,3072x1920@60,auto,2"
       # "eDP-1,3072x1920@60,auto,2"
     ];
 
@@ -88,7 +88,7 @@
 
     misc = {
       disable_hyprland_logo = true;
-      vrr = true;
+      vrr = 1;
       vfr = true;
     };
 
