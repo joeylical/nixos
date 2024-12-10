@@ -27,6 +27,13 @@
 
   powerManagement.powertop.enable = false;
 
+  services.logind = {
+    powerKey = "suspend-then-hibernate";
+    powerKeyLongPress = "poweroff";
+    lidSwitch = "suspend-then-hibernate";
+    lidSwitchDocked = "ignore";
+  };
+
   services.tlp = {
     enable = true;
     settings = {

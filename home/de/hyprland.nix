@@ -18,7 +18,7 @@
     "$mod" = "SUPER";
     "$screen_file" = "$HOME/screen_$(date +'%Y-%m-%d_%H-%M-%S').png";
     monitor = [
-      "eDP-1,3072x1920@60,auto,2"
+      "eDP-1,3072x1920@120,auto,2, vrr, 1"
       # "eDP-1,3072x1920@60,auto,2"
     ];
 
@@ -119,6 +119,7 @@
       "$mod, 7, workspace, 7"
       "$mod, 8, workspace, 8"
       "$mod, 9, workspace, 9"
+      "$mod, Q, togglespecialworkspace, "
       "$mod SHIFT, 1, movetoworkspace, 1"
       "$mod SHIFT, 2, movetoworkspace, 2"
       "$mod SHIFT, 3, movetoworkspace, 3"
@@ -158,7 +159,8 @@
     exec-once = [
       "configure-gtk"
       "paper"
-      "fcitx5 -d"
+      "fcitx5 -d -r"
+      "fcitx5-remote -r"
       "dunst"
       "nm-applet --indicator"
       "blueman-applet"
@@ -175,6 +177,7 @@
 
     windowrule = [
       "noblur, ^(firefox)$"
+      "pseudo, fcitx"
     ];
 
     windowrulev2 = [

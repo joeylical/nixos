@@ -20,9 +20,9 @@
           "clock"
         ];
         modules-right = [
+          "custom/weather"
           "custom/tdp"
           "custom/darkmode"
-          "custom/weather"
           "idle_inhibitor"
           "pulseaudio"
           "battery"

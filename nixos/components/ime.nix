@@ -9,7 +9,7 @@
         addons = with pkgs; [
           fcitx5-gtk
           fcitx5-rime
-          fcitx5-chinese-addons
+          # fcitx5-chinese-addons
           libsForQt5.fcitx5-qt
         ];
       };
