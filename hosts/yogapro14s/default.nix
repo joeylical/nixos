@@ -143,6 +143,10 @@
         libvdpau-va-gl
       ];
     };
+    amdgpu.amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+    };
   };
 
   # sound

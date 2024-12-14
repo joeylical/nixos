@@ -26,6 +26,8 @@
           "idle_inhibitor"
           "pulseaudio"
           "battery"
+          # "network"
+          # "bluetooth"
           "tray"
           "custom/power"
         ];
@@ -108,6 +110,31 @@
           "ignored-sinks" = ["Easy Effects Sink"];
         };
 
+        network= {
+            # interface = "*";
+            format = "{}";
+            "format-wifi"= "{essid}";
+            "format-ethernet"= "󰈀";
+            "format-linked" = "󱛅";
+            "format-disconnected"= "󰖪"; 
+            "tooltip-format"= "{ifname} via {gwaddr} 󰊗";
+            "tooltip-format-wifi"= "{essid} ({signalStrength}%) ";
+            "tooltip-format-ethernet"= "{ifname} 󰈀";
+            "tooltip-format-disconnected"= "Disconnected";
+            "max-length"= 50;
+        };
+
+        bluetooth = {
+          "format" = "{}";
+          "format-disabled" = "󰂲";
+          "format-on" = "";
+          "format-off" = "󰂲";
+          "format-connected" = "󰂱";
+          "tooltip-format" = "{controller_alias}\t{controller_address}";
+          "tooltip-format-connected" = "{controller_alias}\t{controller_address}\n\n{device_enumerate}";
+          "tooltip-format-enumerate-connected" = "{device_alias}\t{device_address}";
+        };
+
         tray = {
           "icon-size" = 12;
           spacing = 2;
@@ -176,7 +203,7 @@
  
       #waybar {
         background-color: @theme_bg_color; 
-        color: @theme_fg_color;
+        color: @theme_text_color;
         margin: 0px 4px;
         padding: 0px 4px;
         transition: 0.5s;
@@ -240,13 +267,15 @@
       #idle_inhibitor,
       #battery,
       #pulseaudio,
+      #network,
+      #bluetooth,
       #tray {
         margin-right: 8px;
       }
 
       menu {
         background-color: @theme_bg_color;
-        color: @theme_fg_color;
+        color: @theme_text_color;
         padding: 10px 0px;
         border-radius: 5px;
         border: 1px solid mix(@theme_bg_color, @theme_fg_color, 0.6);

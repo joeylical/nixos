@@ -29,6 +29,7 @@
       gaps_in = 0;
       gaps_out = 0;
       layout = "master";
+      allow_tearing = true;
     };
 
     decoration = {
@@ -37,17 +38,19 @@
         passes = 1;
         size = 10;
       };
-      "col.shadow" = "rgba(0a0a0a44)";
-      drop_shadow = true;
+      shadow = {
+        enabled = true;
+        range = 40;
+        color = "rgba(0a0a0a44)";
+      };
       rounding = 5;
-      shadow_range = 40;
-      shadow_render_power = 5;
       dim_inactive = false;
       dim_strength = "0.05";
     };
 
     animations = {
       enabled = true;
+      first_launch_animation = false;
       animation = [
         "windows, 1, 3, default"
         "windowsOut, 1, 3, default, popin 80%"
@@ -83,7 +86,7 @@
 
     master = {
       # new_is_master = false;
-      no_gaps_when_only = true;
+      # no_gaps_when_only = true;
     };
 
     misc = {
@@ -153,6 +156,7 @@
     ];
 
     env = [
+      "GDK_SCALE,2"
       "XCURSOR_SIZE, 24"
     ];
 
@@ -173,6 +177,11 @@
       # "hyprshade auto"
       "wl-paste --type text --watch cliphist store"
       "wl-paste --type image --watch cliphist store"
+    ];
+
+    workspace = [
+      "w[tv1], gapsout:0, gapsin:0"
+      "f[1], gapsout:0, gapsin:0"
     ];
 
     windowrule = [
@@ -217,11 +226,17 @@
       "float, class:(yesplaymusic)"
       "float, class:(onedriver)"
       "float, class:(QQ)"
+      "float, class:(steam), title:(^(steam))"
       # "center, floating:1"
       "float,class:^(Zotero)$,title:Zotero Settings"
       "center,class:^(Zotero)$,title:Zotero Settings"
       "noanim,class:^(Zotero)$,title:Zotero Settings"
       # "maxsize 400 100,class:^(Zotero)$,title:Zotero Settings"
+
+      "bordersize 0, floating:0, onworkspace:w[tv1]"
+      "rounding 0, floating:0, onworkspace:w[tv1]"
+      "bordersize 0, floating:0, onworkspace:f[1]"
+      "rounding 0, floating:0, onworkspace:f[1]"
     ];
   };
 

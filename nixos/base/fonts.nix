@@ -37,12 +37,11 @@
       hack-font
       inter
       liberation_ttf
-      nerdfonts
       roboto
       sarasa-gothic
       ubuntu_font_family
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-color-emoji
       source-han-mono
       source-han-sans
@@ -51,12 +50,11 @@
       wqy_zenhei
       lxgw-wenkai
       lxgw-neoxihei
-      (nerdfonts.override { fonts = [
-        "FiraCode"
-        "DroidSansMono"
-        # "jetbrains-mono"
-        "JetBrainsMono"
-       ]; })
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.caskaydia-mono
+      nerd-fonts.caskaydia-cove
     ];
   };
 }
