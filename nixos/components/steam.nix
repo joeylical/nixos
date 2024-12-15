@@ -11,8 +11,10 @@
     protontricks.enable = true;
     gamescopeSession.enable = true;
     gamescopeSession.args = [
-      "-pipewire-dmabuf"
-      "-tenfoot"
+      # "-pipewire-dmabuf"
+      # "-tenfoot"
+      "--expose-wayland"
+      "-h 720 -H 1440 -F fsr"
     ];
     extraCompatPackages = [
       pkgs.proton-ge-bin

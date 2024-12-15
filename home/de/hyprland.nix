@@ -158,6 +158,7 @@
     env = [
       "GDK_SCALE,2"
       "XCURSOR_SIZE, 24"
+      "AQ_DRM_DEVICES, /dev/dri/card1"
     ];
 
     exec-once = [

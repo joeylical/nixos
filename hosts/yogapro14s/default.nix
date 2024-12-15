@@ -177,7 +177,7 @@
 
   # hardware Nvidia
   hardware.nvidia = {
-    open = true;
+    open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
