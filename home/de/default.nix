@@ -47,5 +47,5 @@ in
 
   xdg.enable = true;
 
-  services.easyeffects.enable = true;
+  # services.easyeffects.enable = false;
 }

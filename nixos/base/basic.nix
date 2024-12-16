@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-
-let
-  inherit (import ../../config.nix) userName;
-in
+{ pkgs, specialArgs, ... }:
 {
   nix.settings.experimental-features = "nix-command flakes";
   
@@ -51,7 +47,7 @@ in
     };
   };
 
-  users.users."${userName}" = {
+  users.users."${specialArgs.userName}" = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };

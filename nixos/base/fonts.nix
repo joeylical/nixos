@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   fonts = {
@@ -50,6 +50,7 @@
       wqy_zenhei
       lxgw-wenkai
       lxgw-neoxihei
+      vistafonts-chs
       nerd-fonts.fira-code
       nerd-fonts.droid-sans-mono
       nerd-fonts.jetbrains-mono

@@ -1,9 +1,5 @@
-{config, pkgs, lib, ... }:
+{ specialArgs, ... }:
 
-let
-  inherit (import ../config.nix) userName;
-
-in
 {
   imports = [
     ./de
@@ -11,7 +7,7 @@ in
   ];
 
   home.sessionVariables = {
-    # XDG_CONFIG_DIRS = "/home/${userName}/.config/";
+    # XDG_CONFIG_DIRS = "/home/${specialArgs.userName}/.config/";
     NIXOS_OZONE_WL = "1";
     XMODIFIERS="@im=fcitx";
   };

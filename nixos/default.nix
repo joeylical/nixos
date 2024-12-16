@@ -1,15 +1,12 @@
-{ config, pkgs, ... }:
+{ specialArgs, ... }:
 
-let 
-  inherit (import ../config.nix) timeZone city;
-in
 {
   imports = [
     ./base
   ];
 
   # Time Zone
-  time.timeZone = timeZone;
+  time.timeZone = specialArgs.timeZone;
 
   # i18n
   i18n = {
@@ -17,7 +14,7 @@ in
   };
 
   environment.sessionVariables = {
-    CITY = city;
+    CITY = specialArgs.city;
     XDG_CACHE_HOME  = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME   = "$HOME/.local/share";
@@ -41,6 +38,11 @@ in
   };
 
   nix.settings.auto-optimise-store = true;
+
+  nix.settings.trusted-users = [
+    "root"
+    "nixos"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

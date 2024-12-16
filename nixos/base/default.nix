@@ -1,12 +1,10 @@
 { ... }:
-let
-  modules = (builtins.map
-              (name: ./. + "/${name}")
-              (builtins.filter
-                (name: name != "default.nix")
-                (builtins.attrNames
-                  (builtins.readDir ./. ))));
-in
 {
-  imports = [ ] ++ modules;
+  imports = [
+    ./basic.nix
+    ./fonts.nix
+    ./nodejs.nix
+    ./python.nix
+    ./whisper.nix
+  ];
 }

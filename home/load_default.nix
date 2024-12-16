@@ -20,10 +20,6 @@
       fi
 
       if ! [ -f "$HOME/.wallpaper/wallpaper" ]; then
-        if ! [ -d "$HOME/.wallpaper" ]; then
-          mkdir $HOME./wallpapers
-        fi
-        cd /etc/nixos/home/wallpapers/
         cp `find . -name "*.*"|tail -n +2|sort -R|head -n 1` ~/.wallpaper/wallpaper
       fi
 

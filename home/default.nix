@@ -1,8 +1,5 @@
-{ config, pkgs, lib, environment, specialArgs, ... }:
+{ lib, specialArgs, ... }:
 
-let
-  inherit (import ../config.nix) userName;
-in
 {
   imports = [
     ./shell
@@ -14,10 +11,10 @@ in
 
   programs.home-manager.enable = true;
 
-  home.username = userName;
-  home.homeDirectory = lib.mkForce "/home/${userName}";
+  home.username = specialArgs.userName;
+  home.homeDirectory = lib.mkForce "/home/${specialArgs.userName}";
 
-  home.packages =with pkgs; [
+  home.packages = [
   ];
 
 

@@ -49,6 +49,56 @@
     kitty
     kitty-img
     kitty-themes
+
+    p7zip
+    # peazip
+    firefox-wayland
+    ydict
+    mpv   
+    vlc
+    qalculate-qt
+    (chromium.override {
+      commandLineArgs = [
+        "--enable-wayland-ime"
+        "--enable-features=VaapiVideoDecodeLinuxGL"
+      ];
+    })
+    obsidian
+    rhythmbox
+    audacious
+    audacious-plugins
+    gthumb
+    go-musicfox
+    # youtube-music
+    koreader
+    onlyoffice-bin
+    # wpsoffice
+    # onedrivegui
+    spotify-qt
+    thunderbird-bin
+
+    sqlitebrowser
+    jetbrains.pycharm-community
+    jetbrains.idea-community
+
+    d-spy
+    openai-whisper-cpp
+    playerctl
+
+    foliate
+
+    android-tools
+    scrcpy
+
+    mongodb-compass
+
+    hyprshade
+
+    zotero_7
+
+    cliphist
+
+    remmina
   ];
 
   environment.sessionVariables.PATH = "${pkgs.libsForQt5.polkit-kde-agent.out}/libexec";

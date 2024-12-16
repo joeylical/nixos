@@ -171,7 +171,7 @@
       "blueman-applet"
       "polkit-kde-authentication-agent-1"
       "hyprctl keyword 'device:syna2ba6:00-06cb:cec0-touchpad:enabled' false"
-      "easyeffects -q -l speaker"
+      # "easyeffects -q -l speaker"
       "swayidle -w timeout 60 lockscreen timeout 120 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep lockscreen"
       "pkexec swayosd-libinput-backend"
       # "hyprland-autoname-workspaces"

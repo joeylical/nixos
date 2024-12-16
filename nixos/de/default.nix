@@ -1,7 +1,7 @@
 { ... }:
 let
   modules = (builtins.map
-              (name: ./. + "/${name}")
+              (name: import (./. + "/${name}"))
               (builtins.filter
                 (name: name != "default.nix")
                 (builtins.attrNames
@@ -9,5 +9,4 @@ let
 in
 {
   imports = [ ] ++ modules;
-
 }

@@ -1,13 +1,12 @@
-{ pkgs, ... }:
-let
-  inherit (import ../../config.nix) userName;
-in {
+{ pkgs, specialArgs, ... }:
+{
   imports = [
+    pkgs.nixos-wsl.nixosModules.wsl
   ];
 
   wsl = {
     enable = true;
-    defaultUser = "${userName}";
+    defaultUser = "${specialArgs.userName}";
   };
   
   networking.hostName = "wsl"; # Define your hostname.
