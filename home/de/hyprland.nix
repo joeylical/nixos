@@ -240,7 +240,9 @@
       "rounding 0, floating:0, onworkspace:f[1]"
 
       "fullscreen, class:(gamescope)"
-      "pin, class:(Session streamed by \"TP-LINK RTSP Server\" - mpv), title:(mpv)"
+      "pin, title:(Session streamed by \"TP-LINK RTSP Server\" - mpv), class:(mpv)"
+      "size 402 226, title:(Session streamed by \"TP-LINK RTSP Server\" - mpv), class:(mpv)"
+      "idleinhibit always, fullscreen:1"
     ];
   };
 
