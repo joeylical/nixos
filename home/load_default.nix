@@ -17,6 +17,7 @@
         fi
 
         if ! [ -f "$HOME/.wallpaper/wallpaper" ]; then
+          mkdir -p ~/.wallpaper/
           cp `find . -name "*.*"|tail -n +2|sort -R|head -n 1` ~/.wallpaper/wallpaper
         fi
 

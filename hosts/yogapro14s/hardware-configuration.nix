@@ -15,20 +15,24 @@
   boot.supportedFilesystems = [ "ntfs" ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4318e623-29a2-463d-821d-3a6504a0cc24";
+    # { device = "/dev/disk/by-uuid/4318e623-29a2-463d-821d-3a6504a0cc24";
+    { device = "/dev/disk/by-uuid/0ab60edd-ac1c-4a87-b77f-676fe5df2149";
       fsType = "btrfs";
       options = [ "subvol=@" "noatime" "nodiratime" "discard"];
     };
 
-  boot.initrd.luks.devices."luks-fb70fe28-bd6e-493d-80ed-9d079a03eab3".device = "/dev/disk/by-uuid/fb70fe28-bd6e-493d-80ed-9d079a03eab3";
+  # boot.initrd.luks.devices."luks-fb70fe28-bd6e-493d-80ed-9d079a03eab3".device = "/dev/disk/by-uuid/fb70fe28-bd6e-493d-80ed-9d079a03eab3";
+  boot.initrd.luks.devices."luks-2e94505e-11ab-4c21-ad7a-301dc2b0be36".device = "/dev/disk/by-uuid/2e94505e-11ab-4c21-ad7a-301dc2b0be36";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6FD4-C388";
+    # { device = "/dev/disk/by-uuid/6FD4-C388";
+    { device = "/dev/disk/by-uuid/A2C3-C990";
       fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/58D836CDD836A8E0";
+    { device = "/dev/disk/by-uuid/A074FA3374FA0BB2";
       fsType = "ntfs-3g"; 
       options = [ "rw" "uid=1000" "noatime" "nodiratime" "discard"];
     };

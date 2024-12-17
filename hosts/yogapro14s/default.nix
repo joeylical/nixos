@@ -209,6 +209,7 @@
     "amdgpu"
   ];
 
+  system.stateVersion = "24.11";
 }
 
 
