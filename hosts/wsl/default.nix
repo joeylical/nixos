@@ -1,7 +1,6 @@
 { pkgs, specialArgs, ... }:
 {
   imports = [
-    pkgs.nixos-wsl.nixosModules.wsl
   ];
 
   wsl = {
@@ -20,5 +19,7 @@
   environment.systemPackages = [
     pkgs.cudatoolkit
   ];
+
+  system.stateVersion = "24.05"; # Did you read the comment?
 }
 

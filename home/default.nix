@@ -5,9 +5,9 @@
     ./shell
     ./neovim
     ./scripts
-  ] ++ (if specialArgs.desktop_env then [
+    ./load_default.nix
     ./DE.nix
-  ] else []);
+  ];
 
   programs.home-manager.enable = true;
 

@@ -36,6 +36,7 @@
   outputs = inputs@{
       self,
       nixpkgs,
+      nixos-wsl,
       home-manager,
       nixneovimplugins,
       # nix-vscode-extensions,
@@ -58,25 +59,29 @@
         ./nixos/module/docker.nix
         ( if flags.btrfs then {
             nixpkgs.config.virtualisation.docker.storageDriver = "btrfs";
-          } else null)
+          } else {})
 
         ( if flags.epp then
            ./nixos/module/epp.nix
-          else null)
+          else {})
 
         ( if flags.rocm then
           ./nixos/module/rocmrt.nix
-          else null)
+          else {})
 
         ( if flags.zerotier then
           ./nixos/module/zerotier.nix
-          else null)
+          else {})
 
         ( if flags.desk_env then
           ./nixos/de
-          else null)
+          else {})
 
         (./hosts + ("/" + flags.host))
+
+        ( if flags.host == "wsl" then
+          nixos-wsl.nixosModules.wsl
+          else {})
 
         {
           nixpkgs = {
@@ -114,7 +119,8 @@
       wsl = nixpkgs.lib.nixosSystem (mkConfig {
         desk_env = false;
         btrfs = false;
-        rocm = true;
+        # rocm = true;
+        rocm = false;
         epp = false;
         zerotier = false;
         host = "wsl";

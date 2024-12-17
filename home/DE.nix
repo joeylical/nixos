@@ -1,9 +1,8 @@
-{ specialArgs, ... }:
+{ lib, specialArgs, ... }:
 
-{
+if specialArgs.desktop_env then {
   imports = [
     ./de
-    ./load_default.nix
   ];
 
   home.sessionVariables = {
@@ -11,4 +10,4 @@
     NIXOS_OZONE_WL = "1";
     XMODIFIERS="@im=fcitx";
   };
-}
+} else {}
