@@ -3,7 +3,7 @@
 {
   environment.sessionVariables = {
     # for gtk3
-    GDK_SCALE = "1";
+    GDK_SCALE = "2";
     GDK_DPI_SCALE = "1";
     # java
     _JAVA_OPTIONS = "-Dsun.java2d.uiScale=2";

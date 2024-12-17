@@ -14,20 +14,21 @@ gsettings set "$gnome_schema" icon-theme "$icon_theme"
 gsettings set "$gnome_schema" cursor-theme "$cursor_theme"
 gsettings set "$gnome_schema" font-name "$font_name"
 
+kthm_path="$(nix eval --raw nixpkgs#kitty-themes.outPath)"
 echo $gtk_theme | grep -qi 'Darkest'
 darkest=$?
 if [ "$darkest" -eq 0 ]; then
-    echo 'include /nix/store/3fxv3svadx2snlwz7khrfd2q73d7c1jm-kitty-themes-unstable-2023-09-15/share/kitty-themes/themes/Campbell.conf'>~/.config/kitty/theme
+    echo "include $kthm_path/share/kitty-themes/themes/Campbell.conf">~/.config/kitty/theme
 else
     echo $gtk_theme | grep -qi 'Dark'
     dark=$?
     if [ "$dark" -eq 0 ]; then
-        echo 'include /nix/store/3fxv3svadx2snlwz7khrfd2q73d7c1jm-kitty-themes-unstable-2023-09-15/share/kitty-themes/themes/Alucard.conf'>~/.config/kitty/theme
+        echo "include $kthm_path/share/kitty-themes/themes/Alucard.conf">~/.config/kitty/theme
     else
         echo $gtk_theme | grep -qi 'Light'
         light=$?
         if [ "$light" -eq 0 ]; then
-            echo 'include /nix/store/3fxv3svadx2snlwz7khrfd2q73d7c1jm-kitty-themes-unstable-2023-09-15/share/kitty-themes/themes/Tomorrow.conf'>~/.config/kitty/theme
+            echo "include $kthm_path/share/kitty-themes/themes/Tomorrow.conf">~/.config/kitty/theme
         fi
     fi
 fi

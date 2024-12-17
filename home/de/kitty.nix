@@ -16,8 +16,8 @@
       bold_italic_font = "CaskaydiaCove Nerd Font Mono Italic";
       enable_audio_bell = false;
       linux_display_server = "wayland";
-      shell = "zsh -i";
-      window_padding_width = 8;
+      shell = "zsh";
+      window_padding_width = 4;
       include = "theme";
       cursor = "none";
       cursor_shape = "block";
