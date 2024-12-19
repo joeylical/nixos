@@ -233,6 +233,8 @@
       "center,class:^(Zotero)$,title:Zotero Settings"
       "noanim,class:^(Zotero)$,title:Zotero Settings"
       # "maxsize 400 100,class:^(Zotero)$,title:Zotero Settings"
+      "float, class:(code), title:(^(Open Folder))"
+      "float, class:(xdg-desktop-portal-gtk), title:(^(.*))"
 
       "bordersize 0, floating:0, onworkspace:w[tv1]"
       "rounding 0, floating:0, onworkspace:w[tv1]"

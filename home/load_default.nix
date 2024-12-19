@@ -17,8 +17,8 @@
         fi
 
         if ! [ -f "$HOME/.wallpaper/wallpaper" ]; then
-          mkdir -p ~/.wallpaper/
-          cp `find . -name "*.*"|tail -n +2|sort -R|head -n 1` ~/.wallpaper/wallpaper
+          mkdir -p ~/.wallpaper/ || echo
+          cp `find . -name "*.*"|tail -n +2|sort -R|head -n 1` ~/.wallpaper/wallpaper || echo
         fi
 
         cd /etc/nixos/home/defaults
@@ -26,7 +26,7 @@
         cd -
       '' else "" + ''
         if ! [ -f "$HOME/.p10k.zsh" ]; then
-          cp /etc/nixos/home/de/p10k.zsh $HOME/.p10k.zsh
+          cp /etc/nixos/home/de/p10k.zsh $HOME/.p10k.zsh || echo
         fi
       '');
   };

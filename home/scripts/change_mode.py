@@ -21,6 +21,9 @@ GTK_RE = r'^gtk-theme-name="*Flat-Remix-GTK-(?P<color>\w+)-(?P<mode>[\w-]+)"*$'
 GTK2_FORMAT = 'gtk-theme-name="Flat-Remix-GTK-{color}-{mode}"'
 GTK3_FORMAT = 'gtk-theme-name=Flat-Remix-GTK-{color}-{mode}'
 
+APP_PREFER_RE = 'gtk-application-prefer-dark-theme=(true|false)'
+APP_PREFER = 'gtk-application-prefer-dark-theme={mode_bool}'
+
 if mode == 'toggle':
     with open(os.path.join(HOME_DIR, '.darkmode')) as f:
         m = f.read().strip()
@@ -47,6 +50,7 @@ def apply(mode):
             m = re.search(GTK_RE, content, re.MULTILINE)
             if m is not None:
                 content = re.sub(m.group(0), fmt.format(color=m.group('color'), mode=MODE), content)
+                content = re.sub(APP_PREFER_RE, APP_PREFER.format(mode_bool='true' if (MODE_DARK==MODE) else 'false'), content)
                 # print(content)
                 with open(path, 'w') as f:
                     f.write(content)

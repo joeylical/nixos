@@ -46,14 +46,14 @@
         };
 
         "custom/tdp" = {
-          format = "{}";
-          exec = "cat /tmp/tdp.txt || echo unset";
+          format = "󰓅  {}";
+          exec = "cat /tmp/tdp.txt || echo 35w";
           signal = 1;
           interval = "once";
           menu = "on-click";
           "menu-file" = "$HOME/.config/waybar/tdp.xml";
           "menu-actions" = {
-            "5w" = "sudo ryzenadj -a 5000 -b 5000 -c 5000 && echo 5w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
+            "5w" = "sudo ryzenadj -a 5000 -b 5000 -c 5000 && echo ' 5w' > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
             "15w" = "sudo ryzenadj -a 15000 -b 15000 -c 10000 && echo 15w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
             "25w" = "sudo ryzenadj -a 25000 -b 25000 -c 15000 && echo 25w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
             "35w" = "sudo ryzenadj -a 35000 -b 35000 -c 20000 && echo 35w > /tmp/tdp.txt && pkill -RTMIN+1 waybar";
