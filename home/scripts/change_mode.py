@@ -50,7 +50,7 @@ def apply(mode):
             m = re.search(GTK_RE, content, re.MULTILINE)
             if m is not None:
                 content = re.sub(m.group(0), fmt.format(color=m.group('color'), mode=MODE), content)
-                content = re.sub(APP_PREFER_RE, APP_PREFER.format(mode_bool='true' if (MODE_DARK==MODE) else 'false'), content)
+                content = re.sub(APP_PREFER_RE, APP_PREFER.format(mode_bool=('true' if (MODE_DARK==MODE) else 'false')), content)
                 # print(content)
                 with open(path, 'w') as f:
                     f.write(content)

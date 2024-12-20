@@ -46,7 +46,7 @@
         };
 
         "custom/tdp" = {
-          format = "󰓅  {}";
+          format = "{}";
           exec = "cat /tmp/tdp.txt || echo 35w";
           signal = 1;
           interval = "once";

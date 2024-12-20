@@ -104,7 +104,10 @@
     webkitgtk_4_1
   ];
 
-  environment.sessionVariables.PATH = "${pkgs.libsForQt5.polkit-kde-agent.out}/libexec";
+  environment.sessionVariables = {
+    PATH = "${pkgs.libsForQt5.polkit-kde-agent.out}/libexec";
+    GDK_BACKEND = "wayland";
+  };
 
 
   programs = {

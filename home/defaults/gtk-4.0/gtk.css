@@ -1,4 +1,4 @@
-@import url("/etc/profiles/per-user/nixos/share/themes/Flat-Remix-GTK-Cyan-Light/gtk-4.0/gtk.css")
+@import url("/etc/profiles/per-user/nixos/share/themes/Flat-Remix-GTK-Cyan-Light/gtk-4.0/gtk.css");
 
 tooltip {
     color: @theme_text_color;

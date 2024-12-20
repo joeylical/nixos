@@ -1,14 +1,12 @@
 {specialArgs, pkgs, ... }:
 {
   wayland.windowManager.hyprland.enable = true;
-
-  # wayland.windowManager.hyprland.package =
-  #   specialArgs.hyprland.packages.${pkgs.system}.hyprland;
   
-  # wayland.windowManager.hyprland.plugins = [
-  #   # fixme
-  #   # specialArgs.hyprland-plugins.packages.${pkgs.system}.hyprbars
-  # ];
+  wayland.windowManager.hyprland.plugins = with pkgs.hyprlandPlugins; [
+    hyprbars
+    # hyprexpo
+    hyprspace
+  ];
 
   home.packages = [
     pkgs.hyprland-autoname-workspaces
@@ -23,9 +21,11 @@
     ];
 
     general = {
-      border_size = 1;
-      "col.active_border" = "rgba(0a0a0a44)";
-      "col.inactive_border" = "rgba(00000000)";
+      border_size = 0;
+      # "col.active_border" = "rgba(0a0a0a44)";
+      # "col.inactive_border" = "rgba(00000000)";
+      "col.active_border" = "@theme_accent_color";
+      "col.inactive_border" = "@theme_accent_color";
       gaps_in = 0;
       gaps_out = 0;
       layout = "master";
@@ -42,6 +42,7 @@
         enabled = true;
         range = 40;
         color = "rgba(0a0a0a44)";
+        color_inactive = "rgba(0a0a0a11)";
       };
       rounding = 5;
       dim_inactive = false;
@@ -93,6 +94,40 @@
       disable_hyprland_logo = true;
       vrr = 1;
       vfr = true;
+    };
+
+    plugin = {
+        hyprbars = {
+            bar_height = 20;
+            "bar_color" = "rgb(1e1e1e)";
+            # "col.text" = "";
+            # "bar_padding" = 10;
+            # "bar_button_padding" = 7;
+            "bar_precedence_over_border" = false;
+
+            # example buttons (R -> L)
+            # hyprbars-button = color, size, on-click
+            "hyprbars-button" = [
+              "rgb(ff4040), 10, 󰖭, hyprctl dispatch killactive"
+              "rgb(11ee11), 10, , hyprctl dispatch fullscreen 1"
+            ];
+        };
+
+        # hyprexpo = {
+        #   columns = 3;
+        #   gap_size = 5;
+        #   bg_col = "rgb(111111)";
+        #   workspace_method = "center current"; # [center/first] [workspace] e.g. first 1 or center m+1
+        #
+        #   enable_gesture = true; # laptop touchpad
+        #   gesture_fingers = 3;  # 3 or 4
+        #   gesture_distance = 300; # how far is the "max"
+        #   gesture_positive = true; # positive = swipe down. Negative = swipe up.
+        # };
+
+        overview = {
+        };
+
     };
 
     bind = [
@@ -147,6 +182,8 @@
       ", XF86Calculator, exec, qalculate-qt"
       ''$mod SHIFT, s, exec, grim -g "$(slurp -d)" $screen_file''
       "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+      # "$mod , grave, hyprexpo:expo, toggle"
+      "$mod , grave, overview:toggle"
     ];
 
     bindm = [
@@ -245,6 +282,9 @@
       "pin, title:(Session streamed by \"TP-LINK RTSP Server\" - mpv), class:(mpv)"
       "size 402 226, title:(Session streamed by \"TP-LINK RTSP Server\" - mpv), class:(mpv)"
       "idleinhibit always, fullscreen:1"
+
+      "plugin:hyprbars:nobar, floating:0"
+      "plugin:hyprbars:nobar, class:(wofi)"
     ];
   };
 
