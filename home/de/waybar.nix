@@ -203,7 +203,7 @@
  
       #waybar {
         background-color: @theme_bg_color; 
-        color: @theme_text_color;
+        color: @theme_fg_color;
         margin: 0px 4px;
         padding: 0px 4px;
         transition: 0.5s;

@@ -48,7 +48,7 @@
         Type=Application
       '')
     mangohud
-    wine-wayland
+    wineWowPackages.stagingFull
     winetricks
     steam-run
   ];
