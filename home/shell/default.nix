@@ -50,5 +50,10 @@
         "icat" = "kitty +kitten icat";
       };
     };
+
+    programs.fzf = {
+      enable = true;
+      defaultCommand = "rg --files";
+    };
   };
 }

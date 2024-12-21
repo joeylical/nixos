@@ -4,6 +4,10 @@
   home.activation = {
     deploy_configs = lib.hm.dag.entryAfter ["writeBoundary"]
       (if specialArgs.desktop_env then ''
+        cd /etc/nixos/home/defaults
+        cp -r -n * $HOME/.config/ >/dev/null 2>&1 || echo
+        cd -
+
         if [ -f "$HOME/.config/.gtkrc-2.0" ]; then
           if ! [ -f "$HOME/.gtkrc-2.0" ]; then
             ln -s $HOME/.config/.gtkrc-2.0 $HOME/.gtkrc-2.0 || echo
@@ -21,9 +25,6 @@
           cp `find . -name "*.*"|tail -n +2|sort -R|head -n 1` ~/.wallpaper/wallpaper || echo
         fi
 
-        cd /etc/nixos/home/defaults
-        cp -r -n * $HOME/.config/ >/dev/null 2>&1 || echo
-        cd -
       '' else "" + ''
         if ! [ -f "$HOME/.p10k.zsh" ]; then
           cp /etc/nixos/home/de/p10k.zsh $HOME/.p10k.zsh || echo
