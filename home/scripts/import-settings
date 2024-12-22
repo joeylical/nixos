@@ -10,8 +10,8 @@ icon_theme="$(grep 'gtk-icon-theme-name' "$config" | sed 's/.*\s*=\s*//')"
 cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
 font_name="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
 
-echo "* {all: unset}" > ~/.config/gtk-4.0/gtk.css
-echo "@import url(\"/etc/profiles/per-user/nixos/share/themes/$gtk_theme/gtk-4.0/gtk.css\");" >> ~/.config/gtk-4.0/gtk.css
+echo "/* * {all: unset} */" > ~/.config/gtk-4.0/gtk.css
+echo "/* @import url(\"/etc/profiles/per-user/nixos/share/themes/$gtk_theme/gtk-4.0/gtk.css\"); */" >> ~/.config/gtk-4.0/gtk.css
 
 gsettings set "$gnome_schema" gtk-theme "$gtk_theme"
 gsettings set "$gnome_schema" icon-theme "$icon_theme"
@@ -23,16 +23,19 @@ echo $gtk_theme | grep -qi 'Darkest'
 darkest=$?
 if [ "$darkest" -eq 0 ]; then
     echo "include $kthm_path/share/kitty-themes/themes/Campbell.conf">~/.config/kitty/theme
+    gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 else
     echo $gtk_theme | grep -qi 'Dark'
     dark=$?
     if [ "$dark" -eq 0 ]; then
         echo "include $kthm_path/share/kitty-themes/themes/Alucard.conf">~/.config/kitty/theme
+        gsettings set org.gnome.desktop.interface color-scheme prefer-dark
     else
         echo $gtk_theme | grep -qi 'Light'
         light=$?
         if [ "$light" -eq 0 ]; then
             echo "include $kthm_path/share/kitty-themes/themes/Tomorrow.conf">~/.config/kitty/theme
+            gsettings set org.gnome.desktop.interface color-scheme prefer-light
         fi
     fi
 fi

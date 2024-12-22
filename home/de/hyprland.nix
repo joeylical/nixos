@@ -285,6 +285,7 @@
 
       "plugin:hyprbars:nobar, floating:0"
       "plugin:hyprbars:nobar, class:(wofi)"
+      "pin, class:(wofi)"
     ];
   };
 

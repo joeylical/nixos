@@ -143,18 +143,20 @@ endfunction
 function SetMode(dark)
     if a:dark == v:true
         set background=dark
-        colorscheme material-deep-ocean
+        colorscheme tokyonight-night
     else
         set background=light
         colorscheme material-lighter
     endif
     
-    let useTheme = filereadable(expand("~/.gtkrc-2.0")) && system("ls /etc/profiles/per-user/nixos/share/themes/|wc -l") != 0
-    if useTheme
-        let bg_color=system("grep -o '[^_]bg_color:[#a-z0-9]*' /etc/profiles/per-user/nixos/share/themes/`grep -o 'Flat[a-zA-Z\-]*' ~/.gtkrc-2.0`/gtk-2.0/gtkrc | awk -F':' '{print $2}'")
-        hi Normal guibg=bg_color
+    if 0
+        let useTheme = filereadable(expand("~/.gtkrc-2.0")) && system("ls /etc/profiles/per-user/nixos/share/themes/|wc -l") != 0
+        if useTheme
+            let bg_color=system("grep -o '[^_]bg_color:[#a-z0-9]*' /etc/profiles/per-user/nixos/share/themes/`grep -o 'Flat[a-zA-Z\-]*' ~/.gtkrc-2.0`/gtk-2.0/gtkrc | awk -F':' '{print $2}'")
+            hi Normal guibg=bg_color
+        endif
+        lua vim.defer_fn(function() vim.cmd('call RelinkColors()') end, 200)
     endif
-    lua vim.defer_fn(function() vim.cmd('call RelinkColors()') end, 200)
 endfunction
 
 function AutoSetMode()
